@@ -1,0 +1,64 @@
+.cursor-trail {
+  position: fixed;
+  width: 28px;
+  height: 16px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: fadeTrail 1s ease-out forwards;
+}
+
+.rail {
+  position: absolute;
+  width: 28px;
+  height: 2.5px;
+  background-color: #444;
+  left: 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.rail-top {
+  top: 2px;
+}
+
+.rail-bottom {
+  bottom: 2px;
+}
+
+.tie {
+  position: absolute;
+  width: 3px;
+  height: 12px;
+  background: linear-gradient(to right, #7a3c1a, #8B4513, #7a3c1a);
+  top: 2px;
+  opacity: 0.9;
+  border-radius: 1px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.tie-1 {
+  left: 5px;
+}
+
+.tie-2 {
+  left: 12.5px;
+}
+
+.tie-3 {
+  right: 5px;
+}
+
+@keyframes fadeTrail {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  70% {
+    opacity: 0.5;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(0.5px);
+  }
+}

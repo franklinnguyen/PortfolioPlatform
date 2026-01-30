@@ -1,5 +1,6 @@
 import './Home.css';
 import TransitMap from '../components/TransitMap';
+import CursorTrail from '../components/CursorTrail';
 import { useState } from 'react';
 
 function Home() {
@@ -7,6 +8,7 @@ function Home() {
 
     return (
         <div className="home-container">
+            <CursorTrail />
             <div className="header-container">
                 <img src="/images/fLogo.svg" alt="fLogo" className="logo-img" />
                 <div className="title-container">
