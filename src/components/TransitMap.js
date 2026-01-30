@@ -122,21 +122,36 @@ useEffect(() => {
   const handleMouseMove = (e) => {
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
-    const scaleX = 1400 / rect.width;
-    const scaleY = 900 / rect.height;
+    const scaleX = 1800 / rect.width;
+    const scaleY = 1000 / rect.height;
     const x = (e.clientX - rect.left) * scaleX;
     const y = (e.clientY - rect.top) * scaleY;
 
     const images = imagesRef.current;
-    
+
     const checkLine = (img) => {
       const tempCanvas = document.createElement('canvas');
-      tempCanvas.width = 1400;
-      tempCanvas.height = 900;
+      tempCanvas.width = 1800;
+      tempCanvas.height = 1000;
       const tempCtx = tempCanvas.getContext('2d');
-      tempCtx.drawImage(img, 0, 0, 1400, 900);
-      const pixel = tempCtx.getImageData(x, y, 1, 1).data;
-      return pixel[3] > 0;
+      tempCtx.drawImage(img, 0, 0, 1800, 1000);
+
+      // Check a 3x3 grid around the point for better hit detection
+      const checkRadius = 1;
+      for (let dy = -checkRadius; dy <= checkRadius; dy++) {
+        for (let dx = -checkRadius; dx <= checkRadius; dx++) {
+          const pixel = tempCtx.getImageData(
+            Math.max(0, Math.min(1799, x + dx)),
+            Math.max(0, Math.min(999, y + dy)),
+            1,
+            1
+          ).data;
+          if (pixel[3] > 50) { // Lower threshold for better detection
+            return true;
+          }
+        }
+      }
+      return false;
     };
 
     if (checkLine(images.skills)) {
