@@ -106,8 +106,14 @@ useEffect(() => {
     ctx.translate(-width / 2, -height / 2);
     ctx.drawImage(images.skills, 0, 0, width, height);
     ctx.restore();
-    
+
+    const starScale = Math.max(scaleValues.experience, scaleValues.projects, scaleValues.skills);
+    ctx.save();
+    ctx.translate(width / 2, height / 2);
+    ctx.scale(starScale, starScale);
+    ctx.translate(-width / 2, -height / 2);
     ctx.drawImage(images.star, 0, 0, width, height);
+    ctx.restore();
   };
 
     drawCanvas();
