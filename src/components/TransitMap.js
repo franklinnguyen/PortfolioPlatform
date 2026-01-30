@@ -10,32 +10,55 @@ function TransitMap() {
     projects: 1,
     skills: 1
   });
+  const [opacityValues, setOpacityValues] = useState({
+    experience: 1,
+    projects: 1,
+    skills: 1
+  });
 
   useEffect(() => {
     let animationFrame;
-    
+
     const animate = () => {
       setScaleValues(prev => {
         const newScales = { ...prev };
-        
+
         ['experience', 'projects', 'skills'].forEach(line => {
           const target = hoveredLine === line ? 1.05 : 1;
           const current = prev[line];
           const diff = target - current;
-          
+
           if (Math.abs(diff) > 0.001) {
             newScales[line] = current + diff * 0.15;
           } else {
             newScales[line] = target;
           }
         });
-        
+
         return newScales;
       });
-      
+
+      setOpacityValues(prev => {
+        const newOpacities = { ...prev };
+
+        ['experience', 'projects', 'skills'].forEach(line => {
+          const target = hoveredLine && hoveredLine !== line ? 0.3 : 1;
+          const current = prev[line];
+          const diff = target - current;
+
+          if (Math.abs(diff) > 0.001) {
+            newOpacities[line] = current + diff * 0.15;
+          } else {
+            newOpacities[line] = target;
+          }
+        });
+
+        return newOpacities;
+      });
+
       animationFrame = requestAnimationFrame(animate);
     };
-    
+
     animate();
     return () => cancelAnimationFrame(animationFrame);
   }, [hoveredLine]);
@@ -83,24 +106,27 @@ useEffect(() => {
 
   const drawCanvas = () => {
     ctx.clearRect(0, 0, width, height);
-    
+
     ctx.drawImage(images.river, 0, 0, width, height);
-    
+
     ctx.save();
+    ctx.globalAlpha = opacityValues.experience;
     ctx.translate(width / 2, height / 2);
     ctx.scale(scaleValues.experience, scaleValues.experience);
     ctx.translate(-width / 2, -height / 2);
     ctx.drawImage(images.experience, 0, 0, width, height);
     ctx.restore();
-    
+
     ctx.save();
+    ctx.globalAlpha = opacityValues.projects;
     ctx.translate(width / 2, height / 2);
     ctx.scale(scaleValues.projects, scaleValues.projects);
     ctx.translate(-width / 2, -height / 2);
     ctx.drawImage(images.projects, 0, 0, width, height);
     ctx.restore();
-    
+
     ctx.save();
+    ctx.globalAlpha = opacityValues.skills;
     ctx.translate(width / 2, height / 2);
     ctx.scale(scaleValues.skills, scaleValues.skills);
     ctx.translate(-width / 2, -height / 2);
@@ -117,7 +143,7 @@ useEffect(() => {
   };
 
     drawCanvas();
-    }, [scaleValues]);
+    }, [scaleValues, opacityValues]);
 
   const handleMouseMove = (e) => {
     const canvas = canvasRef.current;
