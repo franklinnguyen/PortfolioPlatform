@@ -16,6 +16,9 @@ body {
 }
 
 .header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 10vh;
     display: flex;
@@ -28,11 +31,11 @@ body {
 }
 
 .content-container {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 75vw;
+    width: 100vw;
+    height: 100vh;
     box-sizing: border-box;
 }
 

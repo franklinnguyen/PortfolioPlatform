@@ -146,11 +146,12 @@ useEffect(() => {
 
   return (
     <div className="transit-map-container">
-      <canvas 
+      <canvas
         ref={canvasRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setHoveredLine(null)}
         className="transit-canvas"
+        style={{ cursor: hoveredLine ? 'pointer' : 'default' }}
       />
     </div>
   );
