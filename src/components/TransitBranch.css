@@ -1,0 +1,53 @@
+@keyframes stationFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.transit-branch text {
+  animation: stationFadeIn 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+/* Stagger delays for each station */
+.transit-branch g:nth-child(3) text {
+  animation-delay: 0.1s;
+}
+
+.transit-branch g:nth-child(4) text {
+  animation-delay: 0.2s;
+}
+
+.transit-branch g:nth-child(5) text {
+  animation-delay: 0.3s;
+}
+
+.transit-branch g:nth-child(6) text {
+  animation-delay: 0.4s;
+}
+
+.transit-branch g:nth-child(7) text {
+  animation-delay: 0.5s;
+}
+
+.transit-branch g:nth-child(8) text {
+  animation-delay: 0.6s;
+}
+
+.transit-branch g:nth-child(9) text {
+  animation-delay: 0.7s;
+}
+
+.transit-branch g:nth-child(10) text {
+  animation-delay: 0.8s;
+}
+
+/* Branch label fades in first */
+.transit-branch > text {
+  animation-delay: 0s;
+}

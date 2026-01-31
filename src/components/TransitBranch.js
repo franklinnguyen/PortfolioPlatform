@@ -1,3 +1,5 @@
+import './TransitBranch.css';
+
 function TransitBranch({
   startX,
   startY,
