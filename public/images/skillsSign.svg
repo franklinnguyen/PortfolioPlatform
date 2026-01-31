@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1000"
+   height="200"
+   viewBox="0 0 264.58333 52.916666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   sodipodi:docname="sign.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.38562861"
+     inkscape:cx="351.37434"
+     inkscape:cy="-14.262427"
+     inkscape:window-width="1472"
+     inkscape:window-height="790"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1" />
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1"
+       transform="translate(0,1.3585556)">
+      <path
+         style="fill:#148844;fill-opacity:1;stroke-width:2.1;stroke-linecap:round;paint-order:markers stroke fill"
+         id="rect1"
+         width="264.58334"
+         height="30.867146"
+         x="0"
+         y="0"
+         ry="0"
+         inkscape:path-effect="#path-effect1"
+         sodipodi:type="rect"
+         rx="0"
+         d="M 0,0 H 264.58334 V 30.867146 H 0 Z"
+         transform="translate(0,-1.2964338)" />
+      <text
+         xml:space="preserve"
+         style="font-size:28.2222px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#148844;fill-opacity:1;stroke-width:2.1;stroke-linecap:round;paint-order:markers stroke fill"
+         x="132.48924"
+         y="24.226576"
+         id="text1"><tspan
+           sodipodi:role="line"
+           id="tspan1"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28.2222px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue Bold';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-opacity:1"
+           x="132.48924"
+           y="24.226576">SKILLS LINE</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:17.6389px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#148844;fill-opacity:1;stroke-width:2.1;stroke-linecap:round;paint-order:markers stroke fill"
+         x="132.0359"
+         y="46.865692"
+         id="text1-4"><tspan
+           sodipodi:role="line"
+           id="tspan1-4"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.6389px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-opacity:1"
+           x="132.0359"
+           y="46.865692">HIGHLY TRAINED</tspan></text>
+    </g>
+  </g>
+</svg>

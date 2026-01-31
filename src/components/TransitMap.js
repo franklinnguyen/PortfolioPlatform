@@ -1,7 +1,9 @@
 import './TransitMap.css';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function TransitMap() {
+  const navigate = useNavigate();
   const canvasRef = useRef(null);
   const imagesRef = useRef(null);
   const [hoveredLine, setHoveredLine] = useState(null);
@@ -191,12 +193,19 @@ useEffect(() => {
     }
   };
 
+  const handleClick = () => {
+    if (hoveredLine === 'skills') {
+      navigate('/skills');
+    }
+  };
+
   return (
     <div className="transit-map-container">
       <canvas
         ref={canvasRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setHoveredLine(null)}
+        onClick={handleClick}
         className="transit-canvas"
         style={{ cursor: hoveredLine ? 'pointer' : 'default' }}
       />

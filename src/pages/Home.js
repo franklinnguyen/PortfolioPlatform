@@ -62,7 +62,7 @@ function Home() {
             </div>
             <div className="bio-container">
                 <p className="bio-text">
-                    Hi! I'm Franklin, a developer with a B.S. in Computer Science and Molecular Biology and robust experience building full-stack GUI and web applications. I'm largely interested using my skillset for medtech, climate solutions, and urban planning. Outside of work, I enjoy group fitness classes, dance numbers, and trying new food.
+                    Hi! I'm Franklin, a developer with a B.S. in Computer Science and Molecular Biology and experience building full-stack GUI and web applications. I'm largely interested using my skillset for medtech, climate solutions, and urban planning. Outside of work, I enjoy group fitness classes, dance numbers, and trying new food.
                 </p>
             </div>
             {showHelp && (

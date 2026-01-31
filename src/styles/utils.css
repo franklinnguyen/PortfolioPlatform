@@ -1,0 +1,14 @@
+/* Shared utility styles */
+
+.sign {
+    width: 500px;
+    height: auto;
+    margin-top: 20px;
+    border: 2px solid black;
+}
+
+@media (max-width: 768px) {
+    .sign {
+        width: 400px;
+    }
+}
