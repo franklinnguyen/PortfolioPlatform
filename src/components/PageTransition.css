@@ -1,6 +1,7 @@
 .page-transition {
-  animation-duration: 0.3s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .page-transition.fade-in {
@@ -14,7 +15,7 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(15px);
   }
   to {
     opacity: 1;
@@ -29,6 +30,6 @@
   }
   to {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-15px);
   }
 }

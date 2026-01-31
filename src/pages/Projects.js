@@ -7,7 +7,7 @@ function Projects() {
     return (
         <div className="projects-page-container">
             <CursorTrail/>
-            <HeaderIcons helpText="Use the back button to the top left to navigate to the home page, or click the badges to visit a different section!" showBackButton={true} />
+            <HeaderIcons helpText="Off track? Head back home with the back button in the top-left, or take an express transfer using the badges!" showBackButton={true} />
             <img
                 src="/images/projectsSign.svg"
                 alt="Projects"

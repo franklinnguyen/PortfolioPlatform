@@ -237,7 +237,37 @@ body {
     pointer-events: auto;
 }
 
+/* Home page navigation badges - bottom left, horizontal row */
+.home-nav-badges {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+    z-index: 100;
+}
+
+.home-nav-badges .page-badge {
+    transform: scale(0.85);
+    margin-right: -6px;
+}
+
+.home-nav-badges .page-badge:last-child {
+    margin-right: 0;
+}
+
+.home-nav-badges .page-badge:hover {
+    transform: scale(0.95);
+}
+
 @media (max-width: 768px) {
+    .home-nav-badges {
+        display: none;
+    }
+
     .header-container {
         flex-wrap: wrap;
         justify-content: center;

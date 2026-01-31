@@ -55,7 +55,7 @@ function Home() {
                     </button>
                     {showHelp && (
                         <div className="help-tooltip">
-                            <p>Click on any transit line to explore that section!</p>
+                            <p>All aboard! Select a line or badge to begin your journey!</p>
                         </div>
                     )}
                 </div>
@@ -79,6 +79,18 @@ function Home() {
             )}
             <div className="content-container">
                 <TransitMap />
+            </div>
+
+            <div className="home-nav-badges">
+                <a href="/experience" className="page-badge">
+                    <img src="/images/experienceBadge.svg" alt="Experience" />
+                </a>
+                <a href="/projects" className="page-badge">
+                    <img src="/images/projectsBadge.svg" alt="Projects" />
+                </a>
+                <a href="/skills" className="page-badge">
+                    <img src="/images/skillsBadge.svg" alt="Skills" />
+                </a>
             </div>
         </div>
     );
