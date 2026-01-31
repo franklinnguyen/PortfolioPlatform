@@ -7,11 +7,19 @@ function CursorTrail() {
   const lastPos = useRef({ x: 0, y: 0 });
   const lastTime = useRef(Date.now());
   const trailIdCounter = useRef(0);
+  const isInitialized = useRef(false);
 
   useEffect(() => {
     let animationFrameId;
 
     const handleMouseMove = (e) => {
+      // Initialize position on first mouse move to avoid trail from (0,0)
+      if (!isInitialized.current) {
+        mousePos.current = { x: e.clientX, y: e.clientY };
+        lastPos.current = { x: e.clientX, y: e.clientY };
+        isInitialized.current = true;
+        return;
+      }
       mousePos.current = { x: e.clientX, y: e.clientY };
     };
 
