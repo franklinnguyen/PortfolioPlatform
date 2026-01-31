@@ -18,8 +18,8 @@ function Projects() {
                 <a href="/skills" className="page-badge">
                     <img src="/images/skillsBadge.svg" alt="Skills" />
                 </a>
-                <a href="/experiences" className="page-badge">
-                    <img src="/images/experiencesBadge.svg" alt="Experiences" />
+                <a href="/experience" className="page-badge">
+                    <img src="/images/experienceBadge.svg" alt="Experiences" />
                 </a>
             </div>
         </div>
