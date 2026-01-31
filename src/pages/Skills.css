@@ -6,4 +6,23 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.skills-content {
+    width: 100%;
+    max-width: 1600px;
+    margin-top: 10px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign {
+    margin-top: 10px;
+    height: auto;
+    width: auto;
 }
