@@ -24,8 +24,27 @@
 
 .page-badge {
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
     display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transition: left 0.8s ease;
+    pointer-events: none;
 }
 
 .page-badge img {
@@ -35,4 +54,8 @@
 
 .page-badge:hover {
     transform: scale(1.1);
+}
+
+.page-badge:hover::before {
+    left: 150%;
 }
