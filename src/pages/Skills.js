@@ -1,10 +1,31 @@
 import "./Skills.css";
 import '../styles/utils.css';
+import { useState, useEffect } from 'react';
 import CursorTrail from '../components/CursorTrail';
 import TransitBranch from '../components/TransitBranch';
 import HeaderIcons from '../components/HeaderIcons';
 
 function Skills() {
+    const [viewBoxWidth, setViewBoxWidth] = useState(1600);
+
+    useEffect(() => {
+        const updateViewBox = () => {
+            const width = window.innerWidth;
+            // Scale viewBox width based on viewport, min 1000, max 1600
+            setViewBoxWidth(Math.max(1000, Math.min(1600, width * 1.2)));
+        };
+
+        updateViewBox();
+        window.addEventListener('resize', updateViewBox);
+        return () => window.removeEventListener('resize', updateViewBox);
+    }, []);
+
+    // Calculate branch positions with tighter spacing on narrow viewports
+    // Narrow: 250 units, scales up to 450 units on wider viewports
+    const gapSize = viewBoxWidth < 900 ? 250 : Math.min(450, viewBoxWidth * 0.28);
+    const centerX = viewBoxWidth / 2;
+    const leftX = centerX - gapSize;
+    const rightX = centerX + gapSize;
     const languagesSkills = [
         'Python',
         'C++',
@@ -30,6 +51,7 @@ function Skills() {
         'Docker',
         'Linux',
         'Figma',
+        'MongoDB',
         'Adobe Creative Suite',
         'AWS'
     ];
@@ -48,33 +70,33 @@ function Skills() {
                 <svg
                     width="100%"
                     height="100%"
-                    viewBox="0 0 1600 500"
+                    viewBox={`0 0 ${viewBoxWidth} 500`}
                     preserveAspectRatio="xMidYMid meet"
                 >
                     <TransitBranch
-                        startX={250}
-                        startY={80}
+                        startX={leftX}
+                        startY={100}
                         stations={languagesSkills}
                         spacing={45}
-                        branchLabel="LANGUAGES BRANCH"
+                        branchLabel={"LANGUAGES\nBRANCH"}
                         color="#148844"
                     />
 
                     <TransitBranch
-                        startX={750}
-                        startY={80}
+                        startX={centerX}
+                        startY={100}
                         stations={frameworksSkills}
                         spacing={45}
-                        branchLabel="FRAMEWORKS & LIBRARIES BRANCH"
+                        branchLabel={"FRAMEWORKS & LIBRARIES\nBRANCH"}
                         color="#148844"
                     />
 
                     <TransitBranch
-                        startX={1250}
-                        startY={80}
+                        startX={rightX}
+                        startY={100}
                         stations={toolsSkills}
                         spacing={45}
-                        branchLabel="TOOLS BRANCH"
+                        branchLabel={"TOOLS\nBRANCH"}
                         color="#148844"
                     />
                 </svg>

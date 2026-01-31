@@ -18,14 +18,18 @@ function TransitBranch({
       {branchLabel && (
         <text
           x={startX}
-          y={lineStart - 40}
+          y={lineStart - 60}
           fill="#000000"
           fontSize="24"
           fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontWeight="bold"
           textAnchor="middle"
         >
-          {branchLabel}
+          {branchLabel.split('\n').map((line, index) => (
+            <tspan key={index} x={startX} dy={index === 0 ? 0 : '1.2em'}>
+              {line}
+            </tspan>
+          ))}
         </text>
       )}
 
@@ -57,7 +61,11 @@ function TransitBranch({
             fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontWeight="normal"
           >
-            {station}
+            {station.split('\n').map((line, lineIndex) => (
+              <tspan key={lineIndex} x={startX + 30} dy={lineIndex === 0 ? 0 : '1.2em'}>
+                {line}
+              </tspan>
+            ))}
           </text>
         </g>
       ))}
