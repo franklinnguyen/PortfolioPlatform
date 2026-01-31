@@ -12,3 +12,27 @@
         width: 400px;
     }
 }
+
+/* Page navigation badges */
+.page-badges {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.page-badge {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+}
+
+.page-badge img {
+    height: 40px;
+    width: auto;
+}
+
+.page-badge:hover {
+    transform: scale(1.1);
+}

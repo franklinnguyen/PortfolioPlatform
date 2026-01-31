@@ -13,6 +13,15 @@ function Projects() {
                 alt="Projects"
                 className="sign"
             />
+
+            <div className="page-badges">
+                <a href="/skills" className="page-badge">
+                    <img src="/images/skillsBadge.svg" alt="Skills" />
+                </a>
+                <a href="/experiences" className="page-badge">
+                    <img src="/images/experiencesBadge.svg" alt="Experiences" />
+                </a>
+            </div>
         </div>
     )
 }

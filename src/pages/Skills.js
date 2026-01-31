@@ -66,6 +66,15 @@ function Skills() {
                 className="sign"
             />
 
+            <div className="page-badges">
+                <a href="/projects" className="page-badge">
+                    <img src="/images/projectsBadge.svg" alt="Projects" />
+                </a>
+                <a href="/experiences" className="page-badge">
+                    <img src="/images/experiencesBadge.svg" alt="Experiences" />
+                </a>
+            </div>
+
             <div className="skills-content">
                 <svg
                     width="100%"
@@ -75,7 +84,7 @@ function Skills() {
                 >
                     <TransitBranch
                         startX={leftX}
-                        startY={100}
+                        startY={120}
                         stations={languagesSkills}
                         spacing={45}
                         branchLabel={"LANGUAGES\nBRANCH"}
@@ -84,7 +93,7 @@ function Skills() {
 
                     <TransitBranch
                         startX={centerX}
-                        startY={100}
+                        startY={120}
                         stations={frameworksSkills}
                         spacing={45}
                         branchLabel={"FRAMEWORKS & LIBRARIES\nBRANCH"}
@@ -93,7 +102,7 @@ function Skills() {
 
                     <TransitBranch
                         startX={rightX}
-                        startY={100}
+                        startY={120}
                         stations={toolsSkills}
                         spacing={45}
                         branchLabel={"TOOLS\nBRANCH"}
