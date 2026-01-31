@@ -31,6 +31,7 @@ body {
     padding-left: 20px;
     z-index: 100;
     pointer-events: none;
+    transition: padding 0.3s ease;
 }
 
 .content-container {
@@ -73,6 +74,7 @@ body {
     max-width: 400px;
     z-index: 10;
     pointer-events: none;
+    transition: all 0.3s ease;
 }
 
 .bio-text {
@@ -84,6 +86,7 @@ body {
     text-align: left;
     letter-spacing: 0.01em;
     text-indent: 2em;
+    transition: font-size 0.3s ease;
 }
 
 .contact-icon-container {
@@ -248,6 +251,9 @@ body {
     justify-content: flex-start;
     gap: 0;
     z-index: 100;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .home-nav-badges .page-badge {
@@ -265,7 +271,9 @@ body {
 
 @media (max-width: 768px) {
     .home-nav-badges {
-        display: none;
+        opacity: 0;
+        transform: translateX(-20px);
+        pointer-events: none;
     }
 
     .header-container {
