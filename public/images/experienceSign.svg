@@ -7,8 +7,30 @@
    viewBox="0 0 264.58335 48.444329"
    version="1.1"
    id="svg1"
+   sodipodi:docname="experienceSign.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.5929957"
+     inkscape:cx="147.64838"
+     inkscape:cy="177.42855"
+     inkscape:window-width="1472"
+     inkscape:window-height="790"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
   <defs
      id="defs1" />
   <g
@@ -42,12 +64,12 @@
          xml:space="preserve"
          style="font-size:17.6389px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#148844;fill-opacity:1;stroke-width:2.1;stroke-linecap:round;paint-order:markers stroke fill"
          x="132.0359"
-         y="46.865692"
+         y="44.665211"
          id="text1-4"><tspan
            id="tspan1-4"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.6389px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-opacity:1"
            x="132.0359"
-           y="46.865692">RIGHT ON TRACK</tspan></text>
+           y="44.665211">RIGHT ON TRACK</tspan></text>
     </g>
   </g>
 </svg>

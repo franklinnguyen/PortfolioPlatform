@@ -2,6 +2,7 @@ import "./Skills.css";
 import '../styles/utils.css';
 import CursorTrail from '../components/CursorTrail';
 import TransitBranch from '../components/TransitBranch';
+import HeaderIcons from '../components/HeaderIcons';
 
 function Skills() {
     const languagesSkills = [
@@ -36,7 +37,12 @@ function Skills() {
     return (
         <div className="skills-page-container">
             <CursorTrail/>
-            <img src="/images/skillsSign.svg" alt="Skills" className="sign" />
+            <HeaderIcons helpText="Use the back button to the top left to navigate to the home page, or click the badges to visit a different section!" showBackButton={true} />
+            <img
+                src="/images/skillsSign.svg"
+                alt="Skills"
+                className="sign"
+            />
 
             <div className="skills-content">
                 <svg

@@ -196,6 +196,10 @@ useEffect(() => {
   const handleClick = () => {
     if (hoveredLine === 'skills') {
       navigate('/skills');
+    } else if (hoveredLine === 'projects') {
+      navigate('/projects');
+    } else if (hoveredLine === 'experience') {
+      navigate('/experience');
     }
   };
 
