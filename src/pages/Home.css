@@ -272,7 +272,6 @@ body {
 @media (max-width: 768px) {
     .home-nav-badges {
         opacity: 0;
-        transform: translateX(-20px);
         pointer-events: none;
     }
 
@@ -332,6 +331,40 @@ body {
 
     .bio-text {
         font-size: 11px;
+    }
+}
+
+@media (min-height: 900px) {
+    .content-container {
+        transform: scale(1.2);
+    }
+}
+
+@media (max-height: 750px) {
+    .content-container {
+        transform: scale(0.85);
+    }
+}
+
+@media (max-width: 768px) and (min-height: 600px) {
+    .content-container {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 600px) and (max-height: 500px), (max-height: 500px) {
+    .home-nav-badges {
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .content-container {
+        opacity: 0;
+        pointer-events: none;
     }
 }
 
