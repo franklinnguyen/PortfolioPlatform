@@ -27,7 +27,7 @@ function Home() {
                         }}
                         aria-label="Contact"
                     >
-                        in
+                        ➤
                     </button>
                     {showContact && (
                         <div className="contact-tooltip">
@@ -62,7 +62,7 @@ function Home() {
             </div>
             <div className="bio-container">
                 <p className="bio-text">
-                    Hi! I'm Franklin, a developer with a B.S. in Computer Science and Molecular Biology and experience building full-stack GUI and web applications. I'm largely interested using my skillset for medtech, climate solutions, and urban planning. Outside of work, I enjoy group fitness classes, dance numbers, and trying new food.
+                    Hi! I'm Franklin, a developer with a B.S. in Computer Science and Molecular Biology and experience building full-stack GUI and web applications. I'm largely interested using my skillset for medtech, climate solutions, and urban planning. Outside of work, I enjoy group fitness classes, dancing, and trying new coffee shops.
                 </p>
             </div>
             {showHelp && (
