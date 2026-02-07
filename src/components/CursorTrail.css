@@ -1,5 +1,5 @@
 .cursor-trail {
-  position: fixed;
+  position: absolute;
   width: 28px;
   height: 16px;
   pointer-events: none;

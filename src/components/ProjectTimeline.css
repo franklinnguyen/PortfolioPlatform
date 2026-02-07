@@ -85,6 +85,12 @@
     border-radius: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.timeline-line-dot:hover {
+    transform: translate(-50%, -50%) scale(1.3);
 }
 
 .timeline-terminal-node {
@@ -226,19 +232,19 @@
 }
 
 .timeline-station-wrapper:nth-child(1) .station-date {
-    animation-delay: 0.35s;
+    animation-delay: 0.65s;
 }
 
 .timeline-station-wrapper:nth-child(2) .station-date {
-    animation-delay: 0.45s;
-}
-
-.timeline-station-wrapper:nth-child(3) .station-date {
     animation-delay: 0.55s;
 }
 
+.timeline-station-wrapper:nth-child(3) .station-date {
+    animation-delay: 0.45s;
+}
+
 .timeline-station-wrapper:nth-child(4) .station-date {
-    animation-delay: 0.65s;
+    animation-delay: 0.35s;
 }
 
 .station-alerts-container {
@@ -306,6 +312,7 @@
 .alert-description p {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: clamp(14px, 1.5vw, 16px);
+    font-weight: 400;
     color: #333333;
     margin: 12px 0;
     animation: fadeInUp 0.5s ease both;

@@ -84,6 +84,7 @@ function ProjectTimeline({ projects }) {
                                 <div
                                     className="timeline-line-dot"
                                     style={{ left: `${position}%` }}
+                                    onClick={() => scrollToProject(index)}
                                 />
                                 {isActive && (
                                     <>

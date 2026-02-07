@@ -14,13 +14,16 @@ function CursorTrail() {
 
     const handleMouseMove = (e) => {
       // Initialize position on first mouse move to avoid trail from (0,0)
+      const x = e.clientX + window.scrollX;
+      const y = e.clientY + window.scrollY;
+
       if (!isInitialized.current) {
-        mousePos.current = { x: e.clientX, y: e.clientY };
-        lastPos.current = { x: e.clientX, y: e.clientY };
+        mousePos.current = { x, y };
+        lastPos.current = { x, y };
         isInitialized.current = true;
         return;
       }
-      mousePos.current = { x: e.clientX, y: e.clientY };
+      mousePos.current = { x, y };
     };
 
     const animate = () => {
