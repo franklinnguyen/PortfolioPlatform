@@ -281,7 +281,7 @@ body {
     .home-nav-badges {
         left: 50%;
         top: auto;
-        bottom: 18%;
+        bottom: 20%;
         transform: translate(-50%, -50%);
         opacity: 1;
         pointer-events: auto;
@@ -344,7 +344,7 @@ body {
     }
 
     .bio-container {
-        top: 18%;
+        top: 16%;
         bottom: auto;
         left: 50%;
         right: auto;
