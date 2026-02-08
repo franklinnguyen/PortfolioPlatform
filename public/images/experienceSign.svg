@@ -2,28 +2,29 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="1007.5591"
-   height="207.55905"
-   viewBox="0 0 266.58334 54.916665"
+   width="1011.3387"
+   height="211.33859"
+   viewBox="0 0 267.58335 55.916668"
    version="1.1"
    id="svg1"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="defs1" />
-  <rect
-     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
-     id="rect3"
-     width="264.58334"
-     height="52.916664"
-     x="0.99999994"
-     y="1" />
   <g
      id="layer1"
-     transform="translate(1.0000028,0.93787818)">
+     transform="translate(1.5000027,1.4378782)">
     <g
        id="g1"
        transform="translate(0,1.3585556)">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         id="rect3"
+         width="264.58334"
+         height="52.916664"
+         x="-2.7066039e-06"
+         y="1.0783195e-09"
+         transform="translate(0,-1.2964338)" />
       <path
          style="fill:#de4032;fill-opacity:1;stroke-width:2.1;stroke-linecap:round;paint-order:markers stroke fill"
          id="rect1"
