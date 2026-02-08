@@ -90,7 +90,7 @@ function Skills() {
                 >
                     <TransitBranch
                         startX={isMobile ? centerX - mobileHorizontalOffset : leftX}
-                        startY={isMobile ? 270 : 120}
+                        startY={isMobile ? 270 : 130}
                         stations={languagesSkills}
                         spacing={isMobile ? 90 : 45}
                         branchLabel={"LANGUAGES\nBRANCH"}
@@ -102,7 +102,7 @@ function Skills() {
 
                     <TransitBranch
                         startX={isMobile ? centerX + mobileHorizontalOffset : centerX}
-                        startY={isMobile ? 270 : 120}
+                        startY={isMobile ? 270 : 130}
                         stations={frameworksSkills}
                         spacing={isMobile ? 90 : 45}
                         branchLabel={isMobile ? "FRAMEWORKS &\nLIBRARIES\nBRANCH" : "FRAMEWORKS & LIBRARIES\nBRANCH"}
@@ -114,7 +114,7 @@ function Skills() {
 
                     <TransitBranch
                         startX={isMobile ? centerX : rightX}
-                        startY={isMobile ? 1100 : 120}
+                        startY={isMobile ? 1100 : 130}
                         stations={toolsSkills}
                         spacing={isMobile ? 90 : 45}
                         branchLabel={"TOOLS\nBRANCH"}
