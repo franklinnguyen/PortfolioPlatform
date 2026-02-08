@@ -14,7 +14,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden;
+    overflow: hidden;
+    position: relative;
 }
 
 .header-container {
@@ -332,8 +333,8 @@ body {
     }
 
     .bio-container {
-        top: 60%;
-        bottom: auto;
+        top: auto;
+        bottom: 60px;
         left: 50%;
         right: auto;
         transform: translate(-50%, 0);
@@ -344,7 +345,12 @@ body {
 
     .bio-text {
         font-size: 11px;
-        text-indent: 0;
+        text-indent: 2em;
+    }
+
+    .content-container {
+        transform: scale(0.9);
+        overflow: hidden;
     }
 }
 
