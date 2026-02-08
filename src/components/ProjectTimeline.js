@@ -64,23 +64,33 @@ function ProjectTimeline({ projects }) {
                 </button>
                 <div className="timeline-content" ref={timelineRef}>
                     <div className="timeline-line"></div>
-                    <img
-                        src="/images/orangeNode.svg"
-                        alt="Start node"
-                        className="timeline-terminal-node start-node"
-                    />
-                    <img
-                        src="/images/orangeNode.svg"
-                        alt="End node"
-                        className="timeline-terminal-node end-node"
-                    />
+                    <div className="terminal-node-group start">
+                        <img
+                            src="/images/orangeNode.svg"
+                            alt="Start node"
+                            className="timeline-terminal-node start-node"
+                        />
+                        <div className="terminal-node-label">
+                            {projects[activeProject > 0 ? activeProject - 1 : projects.length - 1].name}
+                        </div>
+                    </div>
+                    <div className="terminal-node-group end">
+                        <img
+                            src="/images/orangeNode.svg"
+                            alt="End node"
+                            className="timeline-terminal-node end-node"
+                        />
+                        <div className="terminal-node-label">
+                            {projects[activeProject < projects.length - 1 ? activeProject + 1 : 0].name}
+                        </div>
+                    </div>
                     {projects.map((project, index) => {
                         // Calculate position to divide line into equal thirds
                         // Line spans from 0% to 100%, so use that range
                         const position = ((index + 1) / (projects.length + 1)) * 100;
                         const isActive = index === activeProject;
                         return (
-                            <div key={`dot-${index}`}>
+                            <div key={`dot-${index}`} className={`station-group ${isActive ? 'active' : 'inactive'}`}>
                                 <div
                                     className="timeline-line-dot"
                                     style={{ left: `${position}%` }}
