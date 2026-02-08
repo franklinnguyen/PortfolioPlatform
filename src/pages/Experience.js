@@ -15,11 +15,11 @@ function Experience() {
             />
 
             <div className="page-badges">
-                <a href="#/skills" className="page-badge">
-                    <img src="/images/skillsBadge.svg" alt="Skills" />
-                </a>
                 <a href="#/projects" className="page-badge">
                     <img src="/images/projectsBadge.svg" alt="Projects" />
+                </a>
+                <a href="#/skills" className="page-badge">
+                    <img src="/images/skillsBadge.svg" alt="Skills" />
                 </a>
             </div>
         </div>

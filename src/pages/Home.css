@@ -271,6 +271,12 @@ body {
     transform: scale(0.95);
 }
 
+@media (max-width: 1250px) {
+    .content-container {
+        transform: scale(.9);
+    }
+}
+
 @media (max-width: 760px) {
     .home-nav-badges {
         left: 50%;

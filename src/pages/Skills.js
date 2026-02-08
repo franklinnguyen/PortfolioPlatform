@@ -73,11 +73,11 @@ function Skills() {
             />
 
             <div className="page-badges">
-                <a href="#/projects" className="page-badge">
-                    <img src="/images/projectsBadge.svg" alt="Projects" />
-                </a>
                 <a href="#/experience" className="page-badge">
                     <img src="/images/experienceBadge.svg" alt="Experiences" />
+                </a>
+                <a href="#/projects" className="page-badge">
+                    <img src="/images/projectsBadge.svg" alt="Projects" />
                 </a>
             </div>
 
