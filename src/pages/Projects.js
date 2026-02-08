@@ -21,12 +21,11 @@ function Projects() {
             date: "Jan 2024",
             description: [
                 "Created as a modern alternative to Goodreads, addressing the dated UI and limited features of the legacy platform monopolizing the social reading space. Analyzed user pain points and identified key improvements needed for contemporary readers.",
-                "• Awarded \"Most Innovative UI Feature\" among 89 teams at MIT's web.lab competition",
+                "• Awarded \"Most Innovative UI Feature\" among 89 teams at MIT's web.lab competition for dynamic book collection visualization and interactive user experience features",
                 "• Completed full-stack development in under 2 weeks following intensive 2-week web development course, demonstrating rapid learning and execution",
                 "• Designed all custom icons, images, and visual assets while leading storyboarding and Figma prototyping efforts",
                 "• Implemented responsive design considering mobile viewers and adapting challenging, complex UI layouts across various device sizes",
-                "• Engineered interactive social reading platform using MERN stack with Google Books API integration and MUI component library",
-                "• Developed dynamic book collection visualization and interactive user experience features"
+                "• Engineered interactive social reading platform using MERN stack with Google Books API integration and MUI component library"
             ]
         }
     ];
