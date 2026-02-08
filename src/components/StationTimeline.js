@@ -16,13 +16,6 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
 
     const scrollToStation = useCallback((index) => {
         setActiveStation(index);
-        const container = timelineRef.current;
-        if (container) {
-            const station = container.querySelector(`.timeline-station-wrapper:nth-child(${index + 1})`);
-            if (station) {
-                station.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-        }
     }, []);
 
     const handlePrevious = useCallback(() => {
@@ -76,7 +69,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                 </button>
                 <div className="timeline-content" ref={timelineRef}>
                     <div className="timeline-line"></div>
-                    <div className="terminal-node-group start">
+                    <div key={`start-${activeStation}`} className="terminal-node-group start" onClick={handlePrevious}>
                         <img
                             src={nodeImage}
                             alt="Start node"
@@ -89,7 +82,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                             )}
                         </div>
                     </div>
-                    <div className="terminal-node-group end">
+                    <div key={`end-${activeStation}`} className="terminal-node-group end" onClick={handleNext}>
                         <img
                             src={nodeImage}
                             alt="End node"

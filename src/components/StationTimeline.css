@@ -466,6 +466,10 @@
         left: 50% !important;
     }
 
+    .terminal-node-group {
+        cursor: pointer;
+    }
+
     .terminal-node-label {
         display: flex;
         flex-direction: column;
@@ -484,6 +488,8 @@
         font-weight: normal;
         font-size: 14px;
         color: #000000;
+        animation: fadeInUp 0.5s ease both;
+        animation-delay: 0.5s;
     }
 
     .terminal-node-subtitle {
@@ -491,5 +497,7 @@
         font-weight: normal;
         font-size: 11px;
         color: #444;
+        animation: fadeInUp 0.5s ease both;
+        animation-delay: 0.55s;
     }
 }
