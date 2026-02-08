@@ -13,7 +13,7 @@ function Projects() {
             "I designed and built a portfolio website using custom React components and original SVG assets. Inspired by my love for public transportation, I reimagined my hometown of Decatur, AL and its surrounding metropolitan areas as a real public transit system themed after Boston’s MBTA, where I currently live and attended school.",
             "• Conceptualized and designed the full visual system, including transit line layouts, station markers, signage, and icons, modeled after real MBTA maps, station signage, and digital components",
             "• Built a reusable React component system with responsive layouts, conditional content rendering across viewports",
-            "• Implemented swipe-based and scroll-driven gestures, visual interaction cues, hover states, and staged rendering to guide user flow and navigation"
+            "• Implemented swipe-based gestures, visual interaction cues, hover states, and staged rendering to guide user flow and navigation"
             ]
         },
         {

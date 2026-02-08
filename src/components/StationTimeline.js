@@ -35,24 +35,6 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
         const wrapper = timelineWrapperRef.current;
         if (!wrapper) return;
 
-        let isScrolling = false;
-        const handleWheel = (e) => {
-            if (isScrolling) return;
-
-            e.preventDefault();
-            isScrolling = true;
-
-            if (e.deltaY > 0) {
-                handleNext();
-            } else if (e.deltaY < 0) {
-                handlePrevious();
-            }
-
-            setTimeout(() => {
-                isScrolling = false;
-            }, 500);
-        };
-
         let touchStartX = 0;
         const handleTouchStart = (e) => {
             touchStartX = e.touches[0].clientX;
@@ -65,12 +47,10 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
             }
         };
 
-        wrapper.addEventListener('wheel', handleWheel, { passive: false });
         wrapper.addEventListener('touchstart', handleTouchStart, { passive: true });
         wrapper.addEventListener('touchend', handleTouchEnd, { passive: true });
 
         return () => {
-            wrapper.removeEventListener('wheel', handleWheel);
             wrapper.removeEventListener('touchstart', handleTouchStart);
             wrapper.removeEventListener('touchend', handleTouchEnd);
         };
