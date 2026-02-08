@@ -173,7 +173,10 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                     <div className="station-alert-box">
                         <h3 className="alert-title">{stations[activeStation].name}</h3>
                         {stations[activeStation].subtitle && (
-                            <p className="alert-subtitle">{stations[activeStation].subtitle}</p>
+                            <p className="alert-subtitle">
+                                {stations[activeStation].subtitle}
+                                {stations[activeStation].location && ` | ${stations[activeStation].location}`}
+                            </p>
                         )}
                         <div className="alert-description">
                             {stations[activeStation].description.map((item, idx) => (

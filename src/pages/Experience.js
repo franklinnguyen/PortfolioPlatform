@@ -9,6 +9,7 @@ function Experience() {
         {
             name: "Software Engineer I",
             subtitle: "Medtronic",
+            location: "Boston, MA",
             date: "June 2025 - Present",
             description: [
             "I’m a software engineer at Medtronic Surgical Robotics on the GUI Developer Team for the Hugo Robotic-Assisted Surgery System. I contribute to four unique displays across three component types (surgeon console, tower, arms), collaborating closely with UX, systems, testing, and back-end engineering in a safety-critical, regulated environment. Our primary tech stack is Qt/QML/C++ for GUI development and Python for automated testing and tooling.",
@@ -18,6 +19,7 @@ function Experience() {
         {
             name: "Software Engineer Intern",
             subtitle: "Medtronic",
+            location: "Boston, MA",
             date: "June 2024 - August 2024",
             description: [
             "As an intern on the GUI Developer Team for the Hugo Robotic-Assisted Surgery Platform, I refactored and enhanced a GUI testing tool used by over 30 GUI developers and test engineers. I redesigned the tool with a focus on modularity, maintainability, and intuitive workflows, with changes reviewed and merged through multiple code reviews in accordance with team standards and PEP 8 guidelines.",
@@ -27,6 +29,7 @@ function Experience() {
         {
             name: "Advanced Undergraduate Researcher",
             subtitle: "MIT Urban Risk Lab",
+            location: "Cambridge, MA",
             date: "August 2024 - May 2025",
             description: [
             "I was selected as one of 19 MIT Climate and Sustainability Scholars for a year-long research project focused on climate resilience and flood risk assessment. I implemented a light-weight cellular automata–based flood propagation model in Python that incorporates slope, elevation drop, and flow direction to identify potentially flood-vulnerable areas in regions without sensor coverage.",
@@ -36,6 +39,7 @@ function Experience() {
         {
             name: "Undergraduate Developer",
             subtitle: "MIT Urban Risk Lab",
+            location: "Cambridge, MA",
             date: "Feb 2024 - May 2024",
             description: [
             "To improve access to jobs in sustainability, climate, and energy, I prototyped a green jobs platform using the MERN stack. I integrated the Google Sheets API to automatically ingest and populate job listings from form submissions, enabling a lightweight, non-technical content workflow.",
@@ -45,6 +49,7 @@ function Experience() {
         {
             name: "Lab Assistant",
             subtitle: "MIT EECS",
+            location: "Cambridge, MA",
             date: "August 2023 - April 2025",
             description: [
             "I served as course staff for three introductory computer science courses over three semesters, holding 150+ one-on-one student consultations focused on personalized tutoring, live assessments, and exam preparation.",
