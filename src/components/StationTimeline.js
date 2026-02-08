@@ -3,13 +3,14 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 
 function StationTimeline({ stations, nodeColor = "orange" }) {
     const [activeStation, setActiveStation] = useState(0);
+    const [slideDirection, setSlideDirection] = useState('right');
     const timelineRef = useRef(null);
     const timelineWrapperRef = useRef(null);
 
     const nodeImage = `/images/${nodeColor}Node.svg`;
 
     const colorMap = {
-        orange: { primary: '#f39c12', hover: '#e67e22', shadow: 'rgba(243, 156, 18, 0.2)' },
+        orange: { primary: '#EE8F13', hover: '#d67e0e', shadow: 'rgba(238, 143, 19, 0.2)' },
         red: { primary: '#db3325', hover: '#c42d20', shadow: 'rgba(219, 51, 37, 0.2)' }
     };
     const colors = colorMap[nodeColor] || colorMap.orange;
@@ -19,11 +20,13 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
     }, []);
 
     const handlePrevious = useCallback(() => {
+        setSlideDirection('left');
         const newIndex = activeStation > 0 ? activeStation - 1 : stations.length - 1;
         scrollToStation(newIndex);
     }, [activeStation, stations.length, scrollToStation]);
 
     const handleNext = useCallback(() => {
+        setSlideDirection('right');
         const newIndex = activeStation < stations.length - 1 ? activeStation + 1 : 0;
         scrollToStation(newIndex);
     }, [activeStation, stations.length, scrollToStation]);
@@ -140,7 +143,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
             </div>
 
             {activeStation !== null && (
-                <div key={activeStation} className="station-alerts-container">
+                <div key={activeStation} className={`station-alerts-container slide-from-${slideDirection}`}>
                     <h2 className="station-alerts-header">Station Alerts</h2>
                     <div className="station-alert-box">
                         <h3 className="alert-title">{stations[activeStation].name}</h3>
