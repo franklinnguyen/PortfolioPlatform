@@ -275,7 +275,7 @@ body {
     .home-nav-badges {
         left: 50%;
         top: auto;
-        bottom: 12%;
+        bottom: 18%;
         transform: translate(-50%, -50%);
         opacity: 1;
         pointer-events: auto;
@@ -338,7 +338,7 @@ body {
     }
 
     .bio-container {
-        top: 100px;
+        top: 18%;
         bottom: auto;
         left: 50%;
         right: auto;
@@ -355,7 +355,7 @@ body {
 
     .content-container {
         transform: scale(0.9);
-        padding-top: 30px;
+        padding-top: 5px;
         overflow: hidden;
     }
 }
@@ -366,7 +366,7 @@ body {
     }
 }
 
-@media (max-height: 760px) {
+@media (max-height: 700px) {
     .content-container {
         transform: scale(0.8);
     }
