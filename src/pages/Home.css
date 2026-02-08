@@ -272,8 +272,12 @@ body {
 
 @media (max-width: 768px) {
     .home-nav-badges {
-        opacity: 0;
-        pointer-events: none;
+        left: 50%;
+        top: auto;
+        bottom: 15%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .header-container {
@@ -333,7 +337,7 @@ body {
     }
 
     .bio-container {
-        top: 120px;
+        top: 100px;
         bottom: auto;
         left: 50%;
         right: auto;
