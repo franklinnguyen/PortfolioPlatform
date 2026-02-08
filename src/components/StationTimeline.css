@@ -41,6 +41,24 @@
     transform: scale(0.9);
 }
 
+.nav-arrow.prev.bounce-hint {
+    animation: bounceLeft 0.6s ease 0.8s 2;
+}
+
+.nav-arrow.next.bounce-hint {
+    animation: bounceRight 0.6s ease 0.8s 2;
+}
+
+@keyframes bounceLeft {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-5px); }
+}
+
+@keyframes bounceRight {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
 .timeline-content {
     position: relative;
     padding: 20px 30px;

@@ -53,12 +53,37 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
             }, 500);
         };
 
+        let touchStartX = 0;
+        const handleTouchStart = (e) => {
+            touchStartX = e.touches[0].clientX;
+        };
+        const handleTouchEnd = (e) => {
+            const deltaX = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(deltaX) > 50) {
+                if (deltaX < 0) handleNext();
+                else handlePrevious();
+            }
+        };
+
         wrapper.addEventListener('wheel', handleWheel, { passive: false });
+        wrapper.addEventListener('touchstart', handleTouchStart, { passive: true });
+        wrapper.addEventListener('touchend', handleTouchEnd, { passive: true });
 
         return () => {
             wrapper.removeEventListener('wheel', handleWheel);
+            wrapper.removeEventListener('touchstart', handleTouchStart);
+            wrapper.removeEventListener('touchend', handleTouchEnd);
         };
     }, [activeStation, stations.length, handleNext, handlePrevious]);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'ArrowRight') handleNext();
+            else if (e.key === 'ArrowLeft') handlePrevious();
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [handleNext, handlePrevious]);
 
     return (
         <div className="station-timeline" style={{
@@ -67,7 +92,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
             '--timeline-color-shadow': colors.shadow
         }}>
             <div className="timeline-wrapper" ref={timelineWrapperRef}>
-                <button className="nav-arrow prev" onClick={handlePrevious} aria-label="Previous station">
+                <button className="nav-arrow prev bounce-hint" onClick={handlePrevious} aria-label="Previous station">
                     ◀
                 </button>
                 <div className="timeline-content" ref={timelineRef}>
@@ -137,7 +162,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                         );
                     })}
                 </div>
-                <button className="nav-arrow next" onClick={handleNext} aria-label="Next station">
+                <button className="nav-arrow next bounce-hint" onClick={handleNext} aria-label="Next station">
                     ▶
                 </button>
             </div>
