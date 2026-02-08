@@ -5,27 +5,25 @@ import HeaderIcons from '../components/HeaderIcons';
 import StationTimeline from '../components/StationTimeline';
 
 function Projects() {
-    const projects = [
+            const projects = [
         {
             name: "Portfolio Platform",
             date: "Feb 2026",
             description: [
-                "Designed and developed interactive portfolio website from scratch, creating all custom React components and SVG assets. Passionate about public transportation, I envisioned what my hometown of Decatur, AL and surrounding metropolitan areas would look like with real public transit infrastructure, themed after Boston's MBTA system where I currently live and attended school.",
-                "• Engineered MBTA-inspired navigation system with dynamic routing, context-aware badge placement, and interactive station markers, drawing design inspiration from real MBTA maps, station signs, and the iconic \"T\" logo",
-                "• Implemented responsive design with smooth transitions and animations across various viewport sizes",
-                "• Created reusable component library including custom timeline, transit branches, and interactive map elements"
+            "I designed and built a portfolio website using custom React components and original SVG assets. Inspired by my love for public transportation, I reimagined my hometown of Decatur, AL and its surrounding metropolitan areas as a real public transit system themed after Boston’s MBTA, where I currently live and attended school.",
+            "• Conceptualized and designed the full visual system, including transit line layouts, station markers, signage, and icons, modeled after real MBTA maps, station signage, and digital components",
+            "• Built a reusable React component system with responsive layouts, conditional content rendering across viewports",
+            "• Implemented swipe-based and scroll-driven gestures, visual interaction cues, hover states, and staged rendering to guide user flow and navigation"
             ]
         },
         {
             name: "Shelfie",
             date: "Jan 2024",
             description: [
-                "Created as a modern alternative to Goodreads, addressing the dated UI and limited features of the legacy platform monopolizing the social reading space. Analyzed user pain points and identified key improvements needed for contemporary readers.",
-                "• Awarded \"Most Innovative UI Feature\" among 89 teams at MIT's web.lab competition for dynamic book collection visualization and interactive user experience features",
-                "• Completed full-stack development in under 2 weeks following intensive 2-week web development course, demonstrating rapid learning and execution",
-                "• Designed all custom icons, images, and visual assets while leading storyboarding and Figma prototyping efforts",
-                "• Implemented responsive design considering mobile viewers and adapting challenging, complex UI layouts across various device sizes",
-                "• Engineered interactive social reading platform using MERN stack with Google Books API integration and MUI component library"
+            "Created a modern alternative to Goodreads by identifying user pain points in the legacy platform and designing a contemporary social reading experience.",
+            "• Awarded \"Most Innovative UI Feature\" among 89 teams at MIT's web.lab competition for dynamic book collection visualization and interactive UX",
+            "• Completed full-stack development using the MERN stack in under 2 weeks following an intensive web development course, demonstrating rapid learning and execution",
+            "• Led end-to-end design and frontend implementation, including Figma prototyping, custom visual assets, responsive layouts across devices, and Google Books API integration for content search"
             ]
         }
     ];

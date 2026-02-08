@@ -421,10 +421,6 @@
     animation: fadeInUp 0.5s ease both;
 }
 
-.alert-description p:first-child {
-    text-indent: 2em;
-}
-
 .alert-description p:nth-child(1) {
     animation-delay: 0.2s;
 }
@@ -440,6 +436,15 @@
 .alert-description p:nth-child(4) {
     animation-delay: 0.5s;
 }
+
+.alert-description p:nth-child(5) {
+    animation-delay: 0.6s;
+}
+
+.alert-description p:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
 
 @media (max-width: 1200px) {
     .station-timeline {
