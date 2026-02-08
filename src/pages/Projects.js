@@ -2,7 +2,7 @@ import "./Projects.css";
 import '../styles/utils.css';
 import CursorTrail from '../components/CursorTrail';
 import HeaderIcons from '../components/HeaderIcons';
-import ProjectTimeline from '../components/ProjectTimeline';
+import StationTimeline from '../components/StationTimeline';
 
 function Projects() {
     const projects = [
@@ -49,7 +49,7 @@ function Projects() {
                 </a>
             </div>
 
-            <ProjectTimeline projects={projects} />
+            <StationTimeline stations={projects} nodeColor="orange" />
         </div>
     )
 }
