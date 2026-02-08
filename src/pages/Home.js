@@ -27,7 +27,7 @@ function Home() {
                         }}
                         aria-label="Contact"
                     >
-                        ➤
+                        in
                     </button>
                     {showContact && (
                         <div className="contact-tooltip">
@@ -82,13 +82,13 @@ function Home() {
             </div>
 
             <div className="home-nav-badges">
-                <a href="/experience" className="page-badge">
+                <a href="#/experience" className="page-badge">
                     <img src="/images/experienceBadge.svg" alt="Experience" />
                 </a>
-                <a href="/projects" className="page-badge">
+                <a href="#/projects" className="page-badge">
                     <img src="/images/projectsBadge.svg" alt="Projects" />
                 </a>
-                <a href="/skills" className="page-badge">
+                <a href="#/skills" className="page-badge">
                     <img src="/images/skillsBadge.svg" alt="Skills" />
                 </a>
             </div>

@@ -276,9 +276,20 @@ body {
     }
 
     .header-container {
-        flex-wrap: wrap;
         justify-content: center;
         padding-left: 0;
+    }
+
+    .logo-img {
+        width: 60px;
+    }
+
+    .title-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .title-container h2 {
+        font-size: 1rem;
     }
 
     .contact-icon-container {
@@ -321,16 +332,19 @@ body {
     }
 
     .bio-container {
-        bottom: 20px;
+        top: 60%;
+        bottom: auto;
         left: 50%;
         right: auto;
-        transform: translateX(-50%);
+        transform: translate(-50%, 0);
         width: 90%;
+        max-width: 90%;
         text-align: center;
     }
 
     .bio-text {
         font-size: 11px;
+        text-indent: 0;
     }
 }
 

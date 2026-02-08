@@ -318,6 +318,10 @@
     animation: fadeInUp 0.5s ease both;
 }
 
+.alert-description p:first-child {
+    text-indent: 2em;
+}
+
 .alert-description p:nth-child(1) {
     animation-delay: 0.2s;
 }
@@ -373,6 +377,14 @@
 
     .station-alerts-container {
         padding: 0 20px;
+    }
+
+    .station-alerts-header {
+        text-align: center;
+    }
+
+    .alert-title {
+        text-align: center;
     }
 
     .station-alert-box {

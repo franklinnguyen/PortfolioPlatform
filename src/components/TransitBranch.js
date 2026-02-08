@@ -6,7 +6,10 @@ function TransitBranch({
   stations,
   spacing = 80,
   branchLabel,
-  color = '#148844'
+  color = '#148844',
+  labelFontSize = 24,
+  stationFontSize = 18,
+  labelOffset = 60
 }) {
   const dotRadius = 6;
   const terminusRadius = 25;
@@ -20,9 +23,9 @@ function TransitBranch({
       {branchLabel && (
         <text
           x={startX}
-          y={lineStart - 60}
+          y={lineStart - labelOffset}
           fill="#000000"
-          fontSize="24"
+          fontSize={labelFontSize}
           fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontWeight="bold"
           textAnchor="middle"
@@ -59,7 +62,7 @@ function TransitBranch({
             x={startX + 30}
             y={startY + index * spacing + 6}
             fill="#000000"
-            fontSize="18"
+            fontSize={stationFontSize}
             fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontWeight="normal"
           >

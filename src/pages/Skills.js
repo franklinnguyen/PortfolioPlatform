@@ -7,10 +7,13 @@ import HeaderIcons from '../components/HeaderIcons';
 
 function Skills() {
     const [viewBoxWidth, setViewBoxWidth] = useState(1600);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         const updateViewBox = () => {
             const width = window.innerWidth;
+            const mobile = width <= 768;
+            setIsMobile(mobile);
             // Scale viewBox width based on viewport, min 1000, max 1600
             setViewBoxWidth(Math.max(1000, Math.min(1600, width * 1.2)));
         };
@@ -26,6 +29,9 @@ function Skills() {
     const centerX = viewBoxWidth / 2;
     const leftX = centerX - gapSize;
     const rightX = centerX + gapSize;
+
+    // Mobile: smaller horizontal offset to keep labels within viewBox
+    const mobileHorizontalOffset = isMobile ? 220 : 320;
     const languagesSkills = [
         'Python',
         'C++',
@@ -67,10 +73,10 @@ function Skills() {
             />
 
             <div className="page-badges">
-                <a href="/projects" className="page-badge">
+                <a href="#/projects" className="page-badge">
                     <img src="/images/projectsBadge.svg" alt="Projects" />
                 </a>
-                <a href="/experience" className="page-badge">
+                <a href="#/experience" className="page-badge">
                     <img src="/images/experienceBadge.svg" alt="Experiences" />
                 </a>
             </div>
@@ -79,34 +85,43 @@ function Skills() {
                 <svg
                     width="100%"
                     height="100%"
-                    viewBox={`0 0 ${viewBoxWidth} 500`}
+                    viewBox={isMobile ? `0 0 ${viewBoxWidth} 1800` : `0 0 ${viewBoxWidth} 500`}
                     preserveAspectRatio="xMidYMid meet"
                 >
                     <TransitBranch
-                        startX={leftX}
-                        startY={120}
+                        startX={isMobile ? centerX - mobileHorizontalOffset : leftX}
+                        startY={isMobile ? 270 : 120}
                         stations={languagesSkills}
-                        spacing={45}
+                        spacing={isMobile ? 90 : 45}
                         branchLabel={"LANGUAGES\nBRANCH"}
                         color="#148844"
+                        labelFontSize={isMobile ? 36 : 24}
+                        stationFontSize={isMobile ? 28 : 18}
+                        labelOffset={isMobile ? 90 : 60}
                     />
 
                     <TransitBranch
-                        startX={centerX}
-                        startY={120}
+                        startX={isMobile ? centerX + mobileHorizontalOffset : centerX}
+                        startY={isMobile ? 270 : 120}
                         stations={frameworksSkills}
-                        spacing={45}
-                        branchLabel={"FRAMEWORKS & LIBRARIES\nBRANCH"}
+                        spacing={isMobile ? 90 : 45}
+                        branchLabel={isMobile ? "FRAMEWORKS &\nLIBRARIES\nBRANCH" : "FRAMEWORKS & LIBRARIES\nBRANCH"}
                         color="#148844"
+                        labelFontSize={isMobile ? 36 : 24}
+                        stationFontSize={isMobile ? 28 : 18}
+                        labelOffset={isMobile ? 125 : 60}
                     />
 
                     <TransitBranch
-                        startX={rightX}
-                        startY={120}
+                        startX={isMobile ? centerX : rightX}
+                        startY={isMobile ? 1100 : 120}
                         stations={toolsSkills}
-                        spacing={45}
+                        spacing={isMobile ? 90 : 45}
                         branchLabel={"TOOLS\nBRANCH"}
                         color="#148844"
+                        labelFontSize={isMobile ? 36 : 24}
+                        stationFontSize={isMobile ? 28 : 18}
+                        labelOffset={isMobile ? 90 : 60}
                     />
                 </svg>
             </div>

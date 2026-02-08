@@ -42,10 +42,10 @@ function Projects() {
             />
 
             <div className="page-badges">
-                <a href="/skills" className="page-badge">
+                <a href="#/skills" className="page-badge">
                     <img src="/images/skillsBadge.svg" alt="Skills" />
                 </a>
-                <a href="/experience" className="page-badge">
+                <a href="#/experience" className="page-badge">
                     <img src="/images/experienceBadge.svg" alt="Experiences" />
                 </a>
             </div>

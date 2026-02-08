@@ -16,7 +16,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                         onClick={() => navigate('/')}
                         aria-label="Back to home"
                     >
-                        <span className="back-arrow">➜</span>
+                        <span className="back-arrow">➤</span>
                     </button>
                 </div>
             )}
