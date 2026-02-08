@@ -10,6 +10,7 @@
 @media (max-width: 768px) {
     .sign {
         width: 300px;
+        height: auto;
     }
 }
 
