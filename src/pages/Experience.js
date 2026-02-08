@@ -11,7 +11,7 @@ function Experience() {
             subtitle: "Medtronic",
             date: "June 2025 - Present",
             description: [
-            "I’m a software engineer at Medtronic Surgical Robotics on the GUI Developer Team for the Hugo Robotic-Assisted Surgery System. I contribute to four unique displays across three component types (surgeon console, tower, arms), collaborating closely with UX, systems, testing, and back-end engineering in a safety-critical, regulated environment. Our primary tech stack is Qt/QML/C++ for GUI development and DDS-based communication, with Python used for automated testing and tooling.",
+            "I’m a software engineer at Medtronic Surgical Robotics on the GUI Developer Team for the Hugo Robotic-Assisted Surgery System. I contribute to four unique displays across three component types (surgeon console, tower, arms), collaborating closely with UX, systems, testing, and back-end engineering in a safety-critical, regulated environment. Our primary tech stack is Qt/QML/C++ for GUI development and Python for automated testing and tooling.",
             "Hugo features an open console for surgeon comfort and modular robotic arms that can be configured to match procedural needs. Following recent FDA approval, I’m excited to continue building enhancements that improve reliability, usability, and surgical workflow efficiency."
             ]
         },
