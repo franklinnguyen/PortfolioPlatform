@@ -3,8 +3,8 @@
 
 <svg
    width="1000.0001"
-   height="183.09668"
-   viewBox="0 0 264.58335 48.444329"
+   height="200"
+   viewBox="0 0 264.58335 52.916666"
    version="1.1"
    id="svg1"
    sodipodi:docname="projectsSign.svg"
@@ -22,15 +22,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="2.3037502"
-     inkscape:cx="60.987515"
-     inkscape:cy="152.14323"
+     inkscape:zoom="0.41943189"
+     inkscape:cx="456.56996"
+     inkscape:cy="201.46298"
      inkscape:window-width="1472"
-     inkscape:window-height="790"
-     inkscape:window-x="0"
+     inkscape:window-height="802"
+     inkscape:window-x="-1"
      inkscape:window-y="34"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg1" />
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1"
+     showgrid="false" />
   <defs
      id="defs1" />
   <g
@@ -53,23 +54,23 @@
       <text
          xml:space="preserve"
          style="font-size:28.2222px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#148844;fill-opacity:1;stroke-width:2.1;stroke-linecap:round;paint-order:markers stroke fill"
-         x="132.48924"
+         x="131.84015"
          y="24.226576"
          id="text1"><tspan
            id="tspan1"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28.2222px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue Bold';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-opacity:1"
-           x="132.48924"
+           x="131.84015"
            y="24.226576">PROJECTS LINE</tspan></text>
       <text
          xml:space="preserve"
          style="font-size:17.6389px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#148844;fill-opacity:1;stroke-width:2.1;stroke-linecap:round;paint-order:markers stroke fill"
-         x="132.0359"
-         y="44.665211"
+         x="132.29167"
+         y="46.157803"
          id="text1-4"><tspan
            id="tspan1-4"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.6389px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.1;stroke-opacity:1"
-           x="132.0359"
-           y="44.665211">BUILT FOR PRODUCTION</tspan></text>
+           x="132.29167"
+           y="46.157803">BUILT FOR PRODUCTION</tspan></text>
     </g>
   </g>
 </svg>
