@@ -333,8 +333,8 @@ body {
     }
 
     .bio-container {
-        top: auto;
-        bottom: 60px;
+        top: 120px;
+        bottom: auto;
         left: 50%;
         right: auto;
         transform: translate(-50%, 0);
