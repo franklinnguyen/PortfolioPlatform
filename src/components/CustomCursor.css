@@ -1,0 +1,45 @@
+* {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.2s ease;
+}
+
+.custom-cursor.visible {
+  opacity: 1;
+}
+
+.custom-cursor.hovering {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.custom-cursor.clicking {
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.custom-cursor.spinning {
+  animation: cursorSpin 1.2s ease-in-out;
+}
+
+.custom-cursor.spinning.clicking {
+  animation: none;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+@keyframes cursorSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.15);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1.15);
+  }
+}

@@ -210,8 +210,7 @@ useEffect(() => {
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setHoveredLine(null)}
         onClick={handleClick}
-        className="transit-canvas"
-        style={{ cursor: hoveredLine ? 'pointer' : 'default' }}
+        className={`transit-canvas ${hoveredLine ? 'line-hovered' : ''}`}
       />
     </div>
   );

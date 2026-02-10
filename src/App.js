@@ -4,6 +4,7 @@ import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Experience from './pages/Experience';
 import PageTransition from './components/PageTransition';
+import CustomCursor from './components/CustomCursor';
 
 function AppRoutes() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function AppRoutes() {
 function App() {
   return (
     <HashRouter>
+      <CustomCursor />
       <AppRoutes />
     </HashRouter>
   );
