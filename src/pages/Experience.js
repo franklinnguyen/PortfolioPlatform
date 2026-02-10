@@ -1,6 +1,5 @@
 import "./Experience.css";
 import '../styles/utils.css';
-import CursorTrail from '../components/CursorTrail';
 import HeaderIcons from '../components/HeaderIcons';
 import StationTimeline from '../components/StationTimeline';
 
@@ -60,7 +59,6 @@ function Experience() {
 
     return (
         <div className="experience-page-container">
-            <CursorTrail/>
             <HeaderIcons helpText="Off track? Head back home with the back button in the top-left, or take an express transfer using the badges!" showBackButton={true} />
             <img
                 src="/images/experienceSign.svg"

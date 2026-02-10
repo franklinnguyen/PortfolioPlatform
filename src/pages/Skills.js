@@ -1,7 +1,6 @@
 import "./Skills.css";
 import '../styles/utils.css';
 import { useState, useEffect } from 'react';
-import CursorTrail from '../components/CursorTrail';
 import TransitBranch from '../components/TransitBranch';
 import HeaderIcons from '../components/HeaderIcons';
 
@@ -64,7 +63,6 @@ function Skills() {
 
     return (
         <div className="skills-page-container">
-            <CursorTrail/>
             <HeaderIcons helpText="Off track? Head back home with the back button in the top-left, or take an express transfer using the badges!" showBackButton={true} />
             <img
                 src="/images/skillsSign.svg"
