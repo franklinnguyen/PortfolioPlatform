@@ -18,6 +18,7 @@ function PageTransition({ children }) {
       className={`page-transition ${transitionStage}`}
       onAnimationEnd={() => {
         if (transitionStage === 'fade-out') {
+          window.scrollTo(0, 0);
           setTransitionStage('fade-in');
           setDisplayLocation(location);
         }
