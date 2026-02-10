@@ -21,25 +21,15 @@
   transform: translate(-50%, -50%) scale(1.15);
 }
 
-.custom-cursor.clicking {
-  transform: translate(-50%, -50%) scale(0.8);
-  transition: opacity 0.15s ease, transform 0.1s ease;
-}
-
 .custom-cursor.spinning {
-  animation: cursorSpin 1.2s ease-in-out;
-}
-
-.custom-cursor.spinning.clicking {
-  animation: none;
-  transform: translate(-50%, -50%) scale(0.8);
+  animation: cursorSpin 1.2s ease-in-out forwards;
 }
 
 @keyframes cursorSpin {
   from {
-    transform: translate(-50%, -50%) rotate(0deg) scale(1.15);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   to {
-    transform: translate(-50%, -50%) rotate(360deg) scale(1.15);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }

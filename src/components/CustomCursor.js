@@ -6,7 +6,7 @@ const INTERACTIVE_SELECTOR = 'a, button, [role="button"], input[type="submit"], 
 function CustomCursor() {
   const cursorRef = useRef(null);
   const [isHovering, setIsHovering] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
+  const [isSpinning, setIsSpinning] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -22,21 +22,24 @@ function CustomCursor() {
       setIsHovering(!!target);
     };
 
-    const handleMouseDown = () => setIsClicking(true);
-    const handleMouseUp = () => setIsClicking(false);
+    const handleMouseDown = () => {
+      setIsSpinning(false);
+      // Force reflow so re-adding the class restarts the animation
+      void cursor.offsetWidth;
+      setIsSpinning(true);
+    };
+
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
     document.documentElement.addEventListener('mouseleave', handleMouseLeave);
     document.documentElement.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
       document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
       document.documentElement.removeEventListener('mouseenter', handleMouseEnter);
     };
@@ -50,8 +53,7 @@ function CustomCursor() {
     'custom-cursor',
     isVisible ? 'visible' : '',
     isHovering ? 'hovering' : '',
-    isClicking ? 'clicking' : '',
-    isHovering ? 'spinning' : ''
+    isSpinning ? 'spinning' : ''
   ].filter(Boolean).join(' ');
 
   return (
@@ -60,6 +62,7 @@ function CustomCursor() {
       src="/images/isolatedStar.svg"
       alt=""
       className={classes}
+      onAnimationEnd={() => setIsSpinning(false)}
     />
   );
 }
