@@ -163,6 +163,16 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                                 <p key={idx}>{item}</p>
                             ))}
                         </div>
+                        {stations[activeStation].link && (
+                            <a
+                                href={stations[activeStation].link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="alert-link"
+                            >
+                                View Project
+                            </a>
+                        )}
                     </div>
                 </div>
             )}

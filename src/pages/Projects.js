@@ -7,7 +7,7 @@ function Projects() {
             const projects = [
         {
             name: "Portfolio Platform",
-            date: "Feb 2026",
+            date: "February 2026",
             description: [
             "I designed and built a portfolio website using custom React components and original SVG assets. Inspired by my love for public transportation, I reimagined my hometown of Decatur, AL and its surrounding metropolitan areas as a real public transit system themed after Boston’s MBTA, where I currently live and attended school.",
             "• Conceptualized and designed the full visual system, including transit line layouts, station markers, signage, and icons, modeled after real MBTA maps, station signage, and digital components",
@@ -17,7 +17,8 @@ function Projects() {
         },
         {
             name: "Shelfie",
-            date: "Jan 2024",
+            date: "January 2024",
+            link: "https://myshelfie.onrender.com/",
             description: [
             "Created a modern alternative to Goodreads by identifying user pain points in the legacy platform and designing a contemporary social reading experience.",
             "• Awarded \"Most Innovative UI Feature\" among 89 teams at MIT's web.lab competition for dynamic book collection visualization and interactive UX",
