@@ -170,7 +170,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                                 rel="noopener noreferrer"
                                 className="alert-link"
                             >
-                                View Project
+                                ➟ View Project
                             </a>
                         )}
                     </div>

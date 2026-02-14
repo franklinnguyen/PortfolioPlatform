@@ -175,12 +175,12 @@
 }
 
 .station-label {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     font-weight: normal;
     font-size: 20px;
     text-align: center;
     margin: 0;
-    color: #000000;
+    color: var(--color-black);
     transition: color 0.3s ease;
     animation: fadeInUp 0.5s ease both;
 }
@@ -268,10 +268,10 @@
     position: absolute;
     top: calc(50% - 50px);
     transform: translateX(-50%);
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     font-size: clamp(16px, 2vw, 20px);
     font-weight: bold;
-    color: #000000;
+    color: var(--color-black);
     text-transform: uppercase;
     text-align: center;
     white-space: nowrap;
@@ -291,18 +291,18 @@
 }
 
 .station-subtitle {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     font-weight: normal;
     font-size: 15px;
     text-align: center;
-    color: #444;
+    color: var(--color-text-secondary);
     animation: fadeInUp 0.5s ease both;
 }
 
 .station-date {
     font-size: 13px;
     font-weight: 400;
-    color: #666;
+    color: var(--color-text-tertiary);
     text-align: center;
     animation: fadeInUp 0.5s ease both;
 }
@@ -332,10 +332,10 @@
 }
 
 .station-alerts-header {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     font-size: clamp(28px, 4vw, 36px);
     font-weight: bold;
-    color: #000000;
+    color: var(--color-black);
     margin-bottom: 10px;
     text-align: left;
     animation: fadeInUp 0.4s ease;
@@ -353,9 +353,9 @@
 }
 
 .station-alert-box {
-    background-color: #f5f5f5;
-    border: 1px solid #d0d0d0;
-    border-radius: 8px;
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
     padding: clamp(20px, 3vw, 30px);
     box-sizing: border-box;
 }
@@ -391,19 +391,19 @@
 }
 
 .alert-title {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     font-size: clamp(20px, 2.5vw, 24px);
     font-weight: bold;
-    color: #000000;
+    color: var(--color-black);
     margin: 0 0 15px 0;
     animation: fadeInUp 0.5s ease 0.1s both;
 }
 
 .alert-subtitle {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     font-size: clamp(16px, 2vw, 18px);
     font-weight: normal;
-    color: #444;
+    color: var(--color-text-secondary);
     margin: -10px 0 15px 0;
     animation: fadeInUp 0.5s ease 0.15s both;
 }
@@ -413,10 +413,10 @@
 }
 
 .alert-description p {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     font-size: clamp(14px, 1.5vw, 16px);
     font-weight: 400;
-    color: #333333;
+    color: var(--color-text);
     margin: 12px 0;
     animation: fadeInUp 0.5s ease both;
 }
@@ -447,7 +447,7 @@
 
 .alert-link {
     display: inline-block;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     font-size: clamp(14px, 1.5vw, 16px);
     color: var(--timeline-color);
     text-decoration: none;
@@ -561,19 +561,19 @@
     }
 
     .terminal-node-name {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-family: var(--font-primary);
         font-weight: normal;
         font-size: 14px;
-        color: #000000;
+        color: var(--color-black);
         animation: fadeInUp 0.5s ease both;
         animation-delay: 0.5s;
     }
 
     .terminal-node-subtitle {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-family: var(--font-primary);
         font-weight: normal;
         font-size: 11px;
-        color: #444;
+        color: var(--color-text-secondary);
         animation: fadeInUp 0.5s ease both;
         animation-delay: 0.55s;
     }

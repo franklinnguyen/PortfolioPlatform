@@ -1,5 +1,3 @@
-import React from 'react';
-
 function TransitNode({ x, y, label, useImage = true, color = '#148844' }) {
   if (useImage) {
     return (

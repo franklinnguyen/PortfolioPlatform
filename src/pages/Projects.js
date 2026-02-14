@@ -4,7 +4,7 @@ import HeaderIcons from '../components/HeaderIcons';
 import StationTimeline from '../components/StationTimeline';
 
 function Projects() {
-            const projects = [
+    const projects = [
         {
             name: "Portfolio Platform",
             date: "February 2026",

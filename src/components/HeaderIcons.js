@@ -39,7 +39,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            ➜ Visit LinkedIn
+                            ➟ Visit LinkedIn
                         </a>
                     </div>
                 )}

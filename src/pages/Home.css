@@ -1,5 +1,5 @@
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -103,9 +103,9 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2.5px solid #333;
+    border: 2.5px solid var(--color-text);
     background-color: white;
-    color: #333;
+    color: var(--color-text);
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
@@ -117,7 +117,7 @@ body {
 }
 
 .contact-icon:hover {
-    background-color: #333;
+    background-color: var(--color-text);
     color: white;
     transform: scale(1.05);
 }
@@ -133,9 +133,9 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2.5px solid #333;
+    border: 2.5px solid var(--color-text);
     background-color: white;
-    color: #333;
+    color: var(--color-text);
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
@@ -147,7 +147,7 @@ body {
 }
 
 .help-icon:hover {
-    background-color: #333;
+    background-color: var(--color-text);
     color: white;
     transform: scale(1.05);
 }
@@ -157,11 +157,11 @@ body {
     top: 50px;
     right: 0;
     background-color: white;
-    border: 2px solid #333;
-    border-radius: 8px;
+    border: 2px solid var(--color-text);
+    border-radius: var(--border-radius);
     padding: 16px;
     min-width: 200px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-tooltip);
     z-index: 100;
     pointer-events: auto;
 }
@@ -174,14 +174,14 @@ body {
 
 .contact-tooltip a {
     display: inline-block;
-    color: #0077b5;
+    color: var(--color-linkedin);
     text-decoration: none;
     font-size: 14px;
     transition: all 0.2s ease;
 }
 
 .contact-tooltip a:hover {
-    color: #005885;
+    color: var(--color-linkedin-hover);
     text-decoration: underline;
 }
 
@@ -200,11 +200,11 @@ body {
     top: 50px;
     right: 0;
     background-color: white;
-    border: 2px solid #333;
-    border-radius: 8px;
+    border: 2px solid var(--color-text);
+    border-radius: var(--border-radius);
     padding: 16px;
     min-width: 300px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-tooltip);
     z-index: 100;
     pointer-events: auto;
 }
@@ -228,7 +228,7 @@ body {
 
 .help-hint {
     font-size: 12px;
-    color: #666;
+    color: var(--color-text-tertiary);
     font-style: italic;
     margin: 0;
 }
@@ -243,7 +243,6 @@ body {
     pointer-events: auto;
 }
 
-/* Home page navigation badges - bottom left, horizontal row */
 .home-nav-badges {
     position: fixed;
     bottom: 30px;
@@ -336,7 +335,7 @@ body {
     .contact-icon {
         width: 25px;
         height: 25px;
-        border: 2px solid #333;
+        border: 2px solid var(--color-text);
         font-size: 18px;
     }
 
@@ -354,7 +353,7 @@ body {
     .help-icon {
         width: 25px;
         height: 25px;
-        border: 2px solid #333;
+        border: 2px solid var(--color-text);
         font-size: 18px;
     }
 
