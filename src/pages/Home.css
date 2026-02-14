@@ -87,7 +87,7 @@ body {
     align-items: flex-start;
     gap: 0;
     line-height: 1.25;
-    padding-left: 5px;
+    padding-left: 8px;
 }
 
 .title-container > * {
@@ -222,6 +222,10 @@ body {
         padding-left: 0;
     }
 
+    .title-container {
+        padding-left: 8px;
+    }
+
     .logo-img {
         width: 60px;
         height: 60px;
@@ -288,6 +292,10 @@ body {
         padding-top: 15px;
         height: auto;
         min-height: 80px;
+    }
+
+    .title-container {
+        padding-left: 8px;
     }
 
     .logo-img {
