@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HeaderIcons.css';
 
@@ -6,6 +6,22 @@ function HeaderIcons({ helpText, showBackButton = false }) {
     const [showHelp, setShowHelp] = useState(false);
     const [showContact, setShowContact] = useState(false);
     const navigate = useNavigate();
+    const contactRef = useRef(null);
+    const helpRef = useRef(null);
+
+    useEffect(() => {
+        if (!showHelp && !showContact) return;
+        const handleClickOutside = (e) => {
+            if (showContact && contactRef.current && !contactRef.current.contains(e.target)) {
+                setShowContact(false);
+            }
+            if (showHelp && helpRef.current && !helpRef.current.contains(e.target)) {
+                setShowHelp(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [showHelp, showContact]);
 
     return (
         <>
@@ -20,7 +36,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                     </button>
                 </div>
             )}
-            <div className="contact-icon-container">
+            <div className="contact-icon-container" ref={contactRef}>
                 <button
                     className="contact-icon"
                     onClick={() => {
@@ -44,7 +60,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                     </div>
                 )}
             </div>
-            <div className="help-icon-container">
+            <div className="help-icon-container" ref={helpRef}>
                 <button
                     className="help-icon"
                     onClick={() => {
@@ -61,18 +77,6 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                     </div>
                 )}
             </div>
-            {showHelp && (
-                <div
-                    className="help-backdrop"
-                    onClick={() => setShowHelp(false)}
-                />
-            )}
-            {showContact && (
-                <div
-                    className="contact-backdrop"
-                    onClick={() => setShowContact(false)}
-                />
-            )}
         </>
     );
 }
