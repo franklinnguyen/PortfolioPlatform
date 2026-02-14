@@ -46,9 +46,38 @@ body {
     padding-bottom: 10px;
 }
 
-.logo-img {
+.logo-swap {
+    position: relative;
     width: 80px;
-    height: auto;
+    height: 80px;
+    pointer-events: auto;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: opacity 0.24s ease;
+}
+
+.logo-default {
+    opacity: 1;
+}
+
+.logo-smile {
+    opacity: 0;
+}
+
+.logo-swap.is-hovered .logo-default {
+    opacity: 0;
+}
+
+.logo-swap.is-hovered .logo-smile {
+    opacity: 1;
 }
 
 .title-container {
@@ -195,6 +224,12 @@ body {
 
     .logo-img {
         width: 60px;
+        height: 60px;
+    }
+
+    .logo-swap {
+        width: 60px;
+        height: 60px;
     }
 
     .title-container h1 {

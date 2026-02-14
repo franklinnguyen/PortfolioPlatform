@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Home.css';
 import TransitMap from '../components/TransitMap';
 import HeaderIcons from '../components/HeaderIcons';
 
 function Home() {
+    const [isLogoHovered, setIsLogoHovered] = useState(false);
+
     useEffect(() => {
         document.title = 'Franklin Nguyen | Portfolio';
     }, []);
@@ -11,7 +13,14 @@ function Home() {
     return (
         <div className="home-container">
             <div className="header-container">
-                <img src="/images/fLogo.svg" alt="Franklin Nguyen logo" className="logo-img" />
+                <div
+                    className={`logo-swap ${isLogoHovered ? 'is-hovered' : ''}`}
+                    onMouseEnter={() => setIsLogoHovered(true)}
+                    onMouseLeave={() => setIsLogoHovered(false)}
+                >
+                    <img src="/images/fLogo.svg" alt="Franklin Nguyen logo" className="logo-img logo-default" />
+                    <img src="/images/smile.svg" alt="Franklin Nguyen smiling logo" className="logo-img logo-smile" />
+                </div>
                 <div className="title-container">
                     <h1>Franklin Nguyen</h1>
                     <h2 className='subtitle-text'>
