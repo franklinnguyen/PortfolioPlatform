@@ -44,7 +44,7 @@ function Experience() {
             name: "Undergraduate Developer",
             subtitle: "MIT Urban Risk Lab",
             location: "Cambridge, MA",
-            date: "Feb 2024 - May 2024",
+            date: "February 2024 - May 2024",
             description: [
             "To improve access to jobs in sustainability, climate, and energy, I prototyped a green jobs platform using the MERN stack. I integrated the Google Sheets API to automatically ingest and populate job listings from form submissions, enabling a lightweight, non-technical content workflow.",
             "I designed and implemented a fully responsive, dynamic front end optimized for usability across all screen sizes."
