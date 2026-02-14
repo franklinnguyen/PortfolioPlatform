@@ -91,6 +91,7 @@ function Skills() {
                     preserveAspectRatio="xMidYMid meet"
                 >
                     <TransitBranch
+                        branchIndex={0}
                         startX={isMobile ? centerX - mobileHorizontalOffset : leftX}
                         startY={isMobile ? 270 : 130}
                         stations={languagesSkills}
@@ -103,6 +104,7 @@ function Skills() {
                     />
 
                     <TransitBranch
+                        branchIndex={1}
                         startX={isMobile ? centerX + mobileHorizontalOffset : centerX}
                         startY={isMobile ? 270 : 130}
                         stations={frameworksSkills}
@@ -115,6 +117,7 @@ function Skills() {
                     />
 
                     <TransitBranch
+                        branchIndex={2}
                         startX={isMobile ? centerX : rightX}
                         startY={isMobile ? 1100 : 130}
                         stations={toolsSkills}

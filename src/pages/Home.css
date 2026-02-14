@@ -123,6 +123,7 @@ body {
     transform: scale(0.85);
     margin-right: -6px;
     animation: homeBadgeFadeIn 0.5s ease both;
+    transition: transform 0.12s ease;
 }
 
 .home-nav-badges .page-badge:nth-child(1) {
@@ -154,6 +155,10 @@ body {
 
 .home-nav-badges .page-badge:hover {
     transform: scale(0.95);
+}
+
+.home-nav-badges .page-badge:active {
+    transform: scale(0.8);
 }
 
 @media (max-width: 1250px) {

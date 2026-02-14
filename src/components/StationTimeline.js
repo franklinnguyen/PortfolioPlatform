@@ -4,8 +4,10 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 function StationTimeline({ stations, nodeColor = "orange" }) {
     const [activeStation, setActiveStation] = useState(0);
     const [slideDirection, setSlideDirection] = useState('right');
+    const [keyboardNavFeedback, setKeyboardNavFeedback] = useState(false);
     const timelineRef = useRef(null);
     const timelineWrapperRef = useRef(null);
+    const keyboardFeedbackTimeoutRef = useRef(null);
 
     const nodeImage = `/images/${nodeColor}Node.svg`;
 
@@ -19,15 +21,17 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
         setActiveStation(index);
     }, []);
 
-    const handlePrevious = useCallback(() => {
+    const handlePrevious = useCallback((source = 'pointer') => {
         setSlideDirection('left');
         const newIndex = activeStation > 0 ? activeStation - 1 : stations.length - 1;
+        setKeyboardNavFeedback(source === 'keyboard');
         scrollToStation(newIndex);
     }, [activeStation, stations.length, scrollToStation]);
 
-    const handleNext = useCallback(() => {
+    const handleNext = useCallback((source = 'pointer') => {
         setSlideDirection('right');
         const newIndex = activeStation < stations.length - 1 ? activeStation + 1 : 0;
+        setKeyboardNavFeedback(source === 'keyboard');
         scrollToStation(newIndex);
     }, [activeStation, stations.length, scrollToStation]);
 
@@ -58,12 +62,21 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
 
     useEffect(() => {
         const handleKeyDown = (e) => {
-            if (e.key === 'ArrowRight') handleNext();
-            else if (e.key === 'ArrowLeft') handlePrevious();
+            if (e.key === 'ArrowRight') handleNext('keyboard');
+            else if (e.key === 'ArrowLeft') handlePrevious('keyboard');
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [handleNext, handlePrevious]);
+
+    useEffect(() => {
+        if (!keyboardNavFeedback) return undefined;
+        clearTimeout(keyboardFeedbackTimeoutRef.current);
+        keyboardFeedbackTimeoutRef.current = setTimeout(() => {
+            setKeyboardNavFeedback(false);
+        }, 320);
+        return () => clearTimeout(keyboardFeedbackTimeoutRef.current);
+    }, [keyboardNavFeedback, activeStation]);
 
     return (
         <div className="station-timeline" style={{
@@ -77,7 +90,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                 </button>
                 <div className="timeline-content" ref={timelineRef}>
                     <div className="timeline-line"></div>
-                    <div key={`start-${activeStation}`} className="terminal-node-group start" onClick={handlePrevious}>
+                    <div className="terminal-node-group start" onClick={handlePrevious}>
                         <img
                             src={nodeImage}
                             alt="Start node"
@@ -90,7 +103,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                             )}
                         </div>
                     </div>
-                    <div key={`end-${activeStation}`} className="terminal-node-group end" onClick={handleNext}>
+                    <div className="terminal-node-group end" onClick={handleNext}>
                         <img
                             src={nodeImage}
                             alt="End node"
@@ -110,7 +123,10 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                             <div key={`dot-${index}`} className={`station-group ${isActive ? 'active' : 'inactive'}`}>
                                 <div
                                     className="timeline-line-dot"
-                                    style={{ left: `${position}%` }}
+                                    style={{
+                                        left: `${position}%`,
+                                        '--station-index': index
+                                    }}
                                     onClick={() => scrollToStation(index)}
                                 />
                                 {isActive && (
@@ -130,8 +146,11 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                                     </>
                                 )}
                                 <div
-                                    className="timeline-station-wrapper"
-                                    style={{ left: `${position}%` }}
+                                    className={`timeline-station-wrapper ${isActive && keyboardNavFeedback ? 'keyboard-active-feedback' : ''}`}
+                                    style={{
+                                        left: `${position}%`,
+                                        '--station-index': index
+                                    }}
                                     onClick={() => scrollToStation(index)}
                                 >
                                     <div className="station-label">{station.name}</div>
@@ -160,7 +179,9 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                         )}
                         <div className="alert-description">
                             {stations[activeStation].description.map((item, idx) => (
-                                <p key={idx}>{item}</p>
+                                <p key={idx} style={{ animationDelay: `${0.2 + idx * 0.1}s` }}>
+                                    {item}
+                                </p>
                             ))}
                         </div>
                         {stations[activeStation].link && (

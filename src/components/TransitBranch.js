@@ -6,6 +6,7 @@ function TransitBranch({
   stations,
   spacing = 80,
   branchLabel,
+  branchIndex = 0,
   color = '#148844',
   labelFontSize = 24,
   stationFontSize = 18,
@@ -19,9 +20,15 @@ function TransitBranch({
   const lineEnd = startY + (stations.length - 1) * spacing + terminusOffset;
 
   return (
-    <g className="transit-branch">
+    <g
+      className="transit-branch"
+      style={{
+        '--branch-delay': `${branchIndex * 0.14}s`
+      }}
+    >
       {branchLabel && (
         <text
+          className="branch-label"
           x={startX}
           y={lineStart - labelOffset}
           fill="#000000"
@@ -39,18 +46,23 @@ function TransitBranch({
       )}
 
       <line
+        className="branch-line"
         x1={startX}
         y1={lineStart}
         x2={startX}
         y2={lineEnd}
+        style={{
+          '--branch-line-length': `${lineEnd - lineStart}`
+        }}
         stroke={color}
         strokeWidth={18}
         strokeLinecap="round"
       />
 
       {stations.map((station, index) => (
-        <g key={index}>
+        <g key={index} className="station-entry" style={{ '--station-index': index }}>
           <circle
+            className="branch-dot"
             cx={startX}
             cy={startY + index * spacing}
             r={dotRadius}
@@ -59,6 +71,7 @@ function TransitBranch({
           />
 
           <text
+            className="branch-station-text"
             x={startX + 30}
             y={startY + index * spacing + 6}
             fill="#000000"
@@ -76,6 +89,7 @@ function TransitBranch({
       ))}
 
       <image
+        className="branch-terminal start"
         href="/images/greenNode.svg"
         x={startX - terminusRadius}
         y={lineStart - terminusRadius}
@@ -85,6 +99,7 @@ function TransitBranch({
       />
 
       <image
+        className="branch-terminal end"
         href="/images/greenNode.svg"
         x={startX - terminusRadius}
         y={lineEnd - terminusRadius}

@@ -9,45 +9,71 @@
   }
 }
 
-.transit-branch text {
-  animation: stationFadeIn 0.4s ease-out forwards;
+.transit-branch .branch-label {
+  animation: stationFadeIn 0.4s ease-out var(--branch-delay, 0s) both;
   opacity: 0;
 }
 
-/* Stagger delays for each station */
-.transit-branch g:nth-child(3) text {
-  animation-delay: 0.1s;
+.transit-branch .branch-line {
+  stroke-dasharray: var(--branch-line-length, 0);
+  stroke-dashoffset: var(--branch-line-length, 0);
+  animation: branchLineDraw 0.75s ease-out calc(var(--branch-delay, 0s) + 0.1s) forwards;
 }
 
-.transit-branch g:nth-child(4) text {
-  animation-delay: 0.2s;
+.transit-branch .branch-terminal {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0);
 }
 
-.transit-branch g:nth-child(5) text {
-  animation-delay: 0.3s;
+.transit-branch .branch-terminal.start {
+  animation: branchTerminalIn 0.28s ease-out calc(var(--branch-delay, 0s) + 0.1s) forwards;
 }
 
-.transit-branch g:nth-child(6) text {
-  animation-delay: 0.4s;
+.transit-branch .branch-terminal.end {
+  animation: branchTerminalIn 0.28s ease-out calc(var(--branch-delay, 0s) + 0.8s) forwards;
 }
 
-.transit-branch g:nth-child(7) text {
-  animation-delay: 0.5s;
+.transit-branch .branch-dot {
+  opacity: 0;
+  animation: dotIn 0.25s ease-out both;
+  animation-delay: calc(var(--branch-delay, 0s) + 0.2s + (var(--station-index, 0) * 0.06s));
 }
 
-.transit-branch g:nth-child(8) text {
-  animation-delay: 0.6s;
+.transit-branch .branch-station-text {
+  opacity: 0;
+  animation: stationFadeIn 0.4s ease-out both;
+  animation-delay: calc(var(--branch-delay, 0s) + 0.24s + (var(--station-index, 0) * 0.06s));
 }
 
-.transit-branch g:nth-child(9) text {
-  animation-delay: 0.7s;
+@keyframes branchLineDraw {
+  from {
+    stroke-dashoffset: var(--branch-line-length, 0);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
-.transit-branch g:nth-child(10) text {
-  animation-delay: 0.8s;
+@keyframes branchTerminalIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-/* Branch label fades in first */
-.transit-branch > text {
-  animation-delay: 0s;
+@keyframes dotIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
