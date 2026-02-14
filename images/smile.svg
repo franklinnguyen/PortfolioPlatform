@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="300mm"
+   height="300mm"
+   viewBox="0 0 300 300"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1">
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-dasharray:none;stroke-opacity:1"
+       id="path1"
+       cx="150.07545"
+       cy="149.99896"
+       r="135.34857" />
+    <text
+       xml:space="preserve"
+       style="font-size:123.291px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;stroke-width:1.74743;stroke-linecap:round;paint-order:markers stroke fill"
+       x="150"
+       y="181.25427"
+       id="text1"><tspan
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:123.291px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue Bold';stroke-width:1.74743"
+         x="150"
+         y="181.25427">&gt;⩊&lt;</tspan></text>
+  </g>
+</svg>
