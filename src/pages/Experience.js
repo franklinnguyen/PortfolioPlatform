@@ -64,7 +64,7 @@ function Experience() {
 
     return (
         <div className="experience-page-container">
-            <HeaderIcons helpText="Off track? Head back home with the back button in the top-left, or take an express transfer using the badges!" showBackButton={true} />
+            <HeaderIcons helpText="Use ◀ ▶ keys, the arrow buttons, or click a station to express to the next stop. Transfer lines via the badges, or head back to the map with the back button!" showBackButton={true} />
             <img
                 src="/images/experienceSign.svg"
                 alt="Experience"

@@ -4,6 +4,18 @@
     width: 500px;
     height: auto;
     margin-top: 20px;
+    animation: signFadeIn 0.5s ease 0.1s both;
+}
+
+@keyframes signFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 768px) {

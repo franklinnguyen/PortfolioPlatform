@@ -67,7 +67,7 @@ function Skills() {
 
     return (
         <div className="skills-page-container">
-            <HeaderIcons helpText="Off track? Head back home with the back button in the top-left, or take an express transfer using the badges!" showBackButton={true} />
+            <HeaderIcons helpText="Transfer lines via the badges, or head back to the map with the back button!" showBackButton={true} />
             <img
                 src="/images/skillsSign.svg"
                 alt="Skills"

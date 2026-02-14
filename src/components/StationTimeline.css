@@ -329,6 +329,18 @@
     margin: 60px auto 0;
     padding: 0 40px;
     box-sizing: border-box;
+    animation: alertsReveal 0.5s ease 0.3s both;
+}
+
+@keyframes alertsReveal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .station-alerts-header {
@@ -461,12 +473,6 @@
     text-decoration: underline;
 }
 
-@media (max-width: 1200px) {
-    .station-timeline {
-        padding: 40px 40px;
-    }
-}
-
 @media (max-width: 768px) {
     .station-timeline {
         padding: 20px 10px;
@@ -520,6 +526,10 @@
 }
 
 @media (max-width: 1200px) {
+    .station-timeline {
+        padding: 40px 40px;
+    }
+
     .timeline-content {
         width: 100%;
         max-width: 100%;
