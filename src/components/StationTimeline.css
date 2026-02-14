@@ -9,6 +9,7 @@
     padding: 20px 20px;
     padding-top: 40px;
     overflow: visible;
+    box-sizing: border-box;
 }
 
 .timeline-wrapper {
@@ -66,6 +67,7 @@
     scroll-behavior: smooth;
     max-width: 1200px;
     width: 1200px;
+    box-sizing: border-box;
 }
 
 .timeline-content::-webkit-scrollbar {
@@ -619,5 +621,30 @@
         color: var(--color-text-secondary);
         animation: fadeInUp 0.5s ease both;
         animation-delay: 0.55s;
+    }
+}
+
+@media (max-width: 768px) {
+    .station-timeline {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 10px;
+    }
+
+    .timeline-wrapper {
+        width: 100%;
+        margin-bottom: 90px;
+    }
+
+    .timeline-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 16px 20px;
+    }
+
+    .station-alerts-container {
+        max-width: 100%;
+        margin: 40px auto 0;
+        padding: 0 12px;
     }
 }

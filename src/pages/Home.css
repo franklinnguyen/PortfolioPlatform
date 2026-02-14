@@ -92,6 +92,17 @@ body {
     }
 }
 
+@keyframes bioFadeInCentered {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 8px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
 .bio-text {
     margin: 0;
     font-size: 13px;
@@ -203,11 +214,13 @@ body {
         width: 90%;
         max-width: 90%;
         text-align: center;
+        animation: bioFadeInCentered 0.6s ease 0.8s both;
     }
 
     .bio-text {
         font-size: 11px;
-        text-indent: 2em;
+        text-indent: 0;
+        text-align: center;
     }
 
     .content-container {

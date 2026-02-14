@@ -11,3 +11,9 @@
     overflow-y: auto;
     box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+    .experience-page-container {
+        padding: 12px;
+    }
+}
