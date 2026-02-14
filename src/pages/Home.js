@@ -1,80 +1,30 @@
+import { useEffect } from 'react';
 import './Home.css';
 import TransitMap from '../components/TransitMap';
-import { useState } from 'react';
+import HeaderIcons from '../components/HeaderIcons';
 
 function Home() {
-    const [showHelp, setShowHelp] = useState(false);
-    const [showContact, setShowContact] = useState(false);
+    useEffect(() => {
+        document.title = 'Franklin Nguyen | Portfolio';
+    }, []);
 
     return (
         <div className="home-container">
             <div className="header-container">
-                <img src="/images/fLogo.svg" alt="fLogo" className="logo-img" />
+                <img src="/images/fLogo.svg" alt="Franklin Nguyen logo" className="logo-img" />
                 <div className="title-container">
                     <h1>Franklin Nguyen</h1>
                     <h2 className='subtitle-text'>
                         Software Engineer & MIT Alumnus
                     </h2>
                 </div>
-                <div className="contact-icon-container">
-                    <button
-                        className="contact-icon"
-                        onClick={() => {
-                            setShowContact(!showContact);
-                            setShowHelp(false);
-                        }}
-                        aria-label="Contact"
-                    >
-                        in
-                    </button>
-                    {showContact && (
-                        <div className="contact-tooltip">
-                            <p><strong>Let's connect!</strong></p>
-                            <a
-                                href="https://www.linkedin.com/in/franklinminh/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                ➜ Visit LinkedIn
-                            </a>
-                        </div>
-                    )}
-                </div>
-                <div className="help-icon-container">
-                    <button
-                        className="help-icon"
-                        onClick={() => {
-                            setShowHelp(!showHelp);
-                            setShowContact(false);
-                        }}
-                        aria-label="Help"
-                    >
-                        ?
-                    </button>
-                    {showHelp && (
-                        <div className="help-tooltip">
-                            <p>All aboard! Select a line or badge to begin your journey!</p>
-                        </div>
-                    )}
-                </div>
             </div>
+            <HeaderIcons helpText="All aboard! Select a line or badge to begin your journey!" />
             <div className="bio-container">
                 <p className="bio-text">
                     Hi! I'm Franklin, a developer with a B.S. in Computer Science and Molecular Biology and experience building full-stack GUI and web applications. I'm largely interested using my skillset for medtech, climate solutions, and urban planning. Outside of work, I regularly enjoy group fitness classes, dancing to pop anthems, and taste testing new coffee shops.
                 </p>
             </div>
-            {showHelp && (
-                <div
-                    className="help-backdrop"
-                    onClick={() => setShowHelp(false)}
-                />
-            )}
-            {showContact && (
-                <div
-                    className="contact-backdrop"
-                    onClick={() => setShowContact(false)}
-                />
-            )}
             <div className="content-container">
                 <TransitMap />
             </div>

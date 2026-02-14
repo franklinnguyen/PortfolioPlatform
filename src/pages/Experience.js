@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import "./Experience.css";
 import '../styles/utils.css';
 import HeaderIcons from '../components/HeaderIcons';
 import StationTimeline from '../components/StationTimeline';
 
 function Experience() {
+    useEffect(() => {
+        document.title = 'Franklin Nguyen | Experience';
+    }, []);
+
     const experiences = [
         {
             name: "Software Engineer I",

@@ -9,6 +9,10 @@ function Skills() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        document.title = 'Franklin Nguyen | Skills';
+    }, []);
+
+    useEffect(() => {
         const updateViewBox = () => {
             const width = window.innerWidth;
             const mobile = width <= 768;

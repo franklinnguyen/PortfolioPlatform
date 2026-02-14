@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import "./Projects.css";
 import '../styles/utils.css';
 import HeaderIcons from '../components/HeaderIcons';
 import StationTimeline from '../components/StationTimeline';
 
 function Projects() {
+    useEffect(() => {
+        document.title = 'Franklin Nguyen | Projects';
+    }, []);
+
     const projects = [
         {
             name: "Portfolio Platform",
