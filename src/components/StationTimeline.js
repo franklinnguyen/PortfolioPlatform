@@ -96,7 +96,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                             alt="Start node"
                             className="timeline-terminal-node start-node"
                         />
-                        <div className="terminal-node-label">
+                        <div className={`terminal-node-label slide-${slideDirection}`} key={`prev-${activeStation}`}>
                             <span className="terminal-node-name">{stations[activeStation > 0 ? activeStation - 1 : stations.length - 1].name}</span>
                             {stations[activeStation > 0 ? activeStation - 1 : stations.length - 1].subtitle && (
                                 <span className="terminal-node-subtitle">{stations[activeStation > 0 ? activeStation - 1 : stations.length - 1].subtitle}</span>
@@ -109,7 +109,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                             alt="End node"
                             className="timeline-terminal-node end-node"
                         />
-                        <div className="terminal-node-label">
+                        <div className={`terminal-node-label slide-${slideDirection}`} key={`next-${activeStation}`}>
                             <span className="terminal-node-name">{stations[activeStation < stations.length - 1 ? activeStation + 1 : 0].name}</span>
                             {stations[activeStation < stations.length - 1 ? activeStation + 1 : 0].subtitle && (
                                 <span className="terminal-node-subtitle">{stations[activeStation < stations.length - 1 ? activeStation + 1 : 0].subtitle}</span>
@@ -153,9 +153,11 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                                     }}
                                     onClick={() => scrollToStation(index)}
                                 >
-                                    <div className="station-label">{station.name}</div>
-                                    {station.subtitle && <div className="station-subtitle">{station.subtitle}</div>}
-                                    <div className="station-date">{station.date}</div>
+                                    <div key={`station-text-${activeStation}`} className={isActive ? `station-text slide-${slideDirection}` : 'station-text'}>
+                                        <div className="station-label">{station.name}</div>
+                                        {station.subtitle && <div className="station-subtitle">{station.subtitle}</div>}
+                                        <div className="station-date">{station.date}</div>
+                                    </div>
                                 </div>
                             </div>
                         );
@@ -167,9 +169,9 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
             </div>
 
             {activeStation !== null && (
-                <div key={activeStation} className={`station-alerts-container slide-from-${slideDirection}`}>
+                <div className="station-alerts-container">
                     <h2 className="station-alerts-header">Station Alerts</h2>
-                    <div className="station-alert-box">
+                    <div key={activeStation} className="station-alert-box">
                         <h3 className="alert-title">{stations[activeStation].name}</h3>
                         {stations[activeStation].subtitle && (
                             <p className="alert-subtitle">
