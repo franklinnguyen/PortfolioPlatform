@@ -123,12 +123,20 @@
 }
 
 .contact-tooltip a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     color: var(--color-linkedin);
     text-decoration: none;
     font-size: 14px;
     transition: all 0.2s ease;
     margin-top: 6px;
+}
+
+.link-arrow {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
 .contact-tooltip a:hover {

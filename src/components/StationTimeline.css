@@ -454,7 +454,9 @@
 }
 
 .alert-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-family: var(--font-primary);
     font-size: clamp(14px, 1.5vw, 16px);
     color: var(--timeline-color);
@@ -462,6 +464,12 @@
     margin-top: 8px;
     transition: color 0.2s ease;
     animation: fadeInUp 0.5s ease 0.7s both;
+}
+
+.alert-link-arrow {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
 .alert-link:hover {
