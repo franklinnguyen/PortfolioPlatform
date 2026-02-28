@@ -50,6 +50,7 @@ function Skills() {
         'PyQt',
         'PyTest',
         'React.js',
+        'Squish',
         'Express.js',
         'Next.js',
         'MUI'
@@ -59,10 +60,11 @@ function Skills() {
         'Git',
         'Docker',
         'Linux',
+        'Hardware Testing',
         'Figma',
-        'MongoDB',
         'Adobe Creative Suite',
-        'AWS'
+        'Atlassian',
+        'MongoDB'
     ];
 
     return (
@@ -87,7 +89,7 @@ function Skills() {
                 <svg
                     width="100%"
                     height="100%"
-                    viewBox={isMobile ? `0 0 ${viewBoxWidth} 1800` : `0 0 ${viewBoxWidth} 500`}
+                    viewBox={isMobile ? `0 0 ${viewBoxWidth} 1900` : `0 0 ${viewBoxWidth} 510`}
                     preserveAspectRatio="xMidYMid meet"
                 >
                     <TransitBranch
