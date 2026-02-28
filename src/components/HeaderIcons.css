@@ -23,15 +23,20 @@
     pointer-events: auto;
 }
 
-.back-arrow {
-    display: inline-block;
-    transform: rotate(180deg);
+.back-button img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
 }
 
 .back-button:hover {
     background-color: var(--color-text);
     color: white;
     transform: scale(1.05);
+}
+
+.back-button:hover img {
+    filter: invert(1);
 }
 
 .contact-icon-container {
@@ -178,6 +183,11 @@
         font-size: 18px;
     }
 
+    .back-button img {
+        width: 14px;
+        height: 14px;
+    }
+
     .contact-icon-container {
         right: 39px;
         top: 10px;
@@ -188,6 +198,13 @@
         height: 25px;
         border: 2px solid var(--color-text);
         font-size: 18px;
+    }
+
+    .contact-icon svg,
+    .help-icon svg {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
     }
 
     .contact-tooltip {
