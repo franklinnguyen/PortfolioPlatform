@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import './HeaderIcons.css';
 
 function HeaderIcons({ helpText, showBackButton = false }) {
@@ -45,7 +47,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                     }}
                     aria-label="Contact"
                 >
-                    in
+                    <MailOutlineIcon fontSize="small" />
                 </button>
                 {showContact && (
                     <div className="contact-tooltip">
@@ -56,6 +58,9 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                             rel="noopener noreferrer"
                         >
                             ➟ Visit LinkedIn
+                        </a>
+                        <a href="mailto:franklin@franklinminh.com">
+                            ➟ franklin@franklinminh.com
                         </a>
                     </div>
                 )}
@@ -69,7 +74,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                     }}
                     aria-label="Help"
                 >
-                    ?
+                    <QuestionMarkIcon fontSize="small" />
                 </button>
                 {showHelp && (
                     <div className="help-tooltip">

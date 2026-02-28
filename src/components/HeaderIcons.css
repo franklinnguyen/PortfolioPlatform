@@ -118,11 +118,12 @@
 }
 
 .contact-tooltip a {
-    display: inline-block;
+    display: block;
     color: var(--color-linkedin);
     text-decoration: none;
     font-size: 14px;
     transition: all 0.2s ease;
+    margin-top: 6px;
 }
 
 .contact-tooltip a:hover {
