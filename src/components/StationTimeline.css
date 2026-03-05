@@ -372,7 +372,7 @@
     font-size: clamp(20px, 2.5vw, 24px);
     font-weight: bold;
     color: var(--color-black);
-    margin: 0 0 15px 0;
+    margin: 0 0 8px 0;
     animation: fadeInUp 0.5s ease 0.1s both;
 }
 
@@ -381,7 +381,7 @@
     font-size: clamp(16px, 2vw, 18px);
     font-weight: normal;
     color: var(--color-text-secondary);
-    margin: -10px 0 15px 0;
+    margin: 0 0 15px 0;
     animation: fadeInUp 0.5s ease 0.15s both;
 }
 
@@ -463,7 +463,7 @@
     text-decoration: none;
     margin-top: 8px;
     transition: color 0.2s ease;
-    animation: fadeInUp 0.5s ease 0.7s both;
+    animation: fadeInUp 0.5s ease 0.2s both;
 }
 
 .alert-link-arrow {

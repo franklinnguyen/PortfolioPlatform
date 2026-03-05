@@ -2,11 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CheckIcon from '@mui/icons-material/Check';
 import './HeaderIcons.css';
 
 function HeaderIcons({ helpText, showBackButton = false }) {
     const [showHelp, setShowHelp] = useState(false);
     const [showContact, setShowContact] = useState(false);
+    const [emailCopied, setEmailCopied] = useState(false);
     const navigate = useNavigate();
     const contactRef = useRef(null);
     const helpRef = useRef(null);
@@ -59,9 +62,22 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                         >
                             <svg className="link-arrow" viewBox="0 0 100.94268 100.48275" fill="currentColor"><g transform="translate(-43.89965,-98.258601)"><path d="m 94.600942,98.258602 10.169408,10.169408 14.95051,14.95051 11.07167,11.07167 3.87884,3.87883 10.17095,10.17096 -10.1694,10.1694 -14.95051,14.95051 -14.95051,14.95051 -10.170958,10.17096 -14.048756,-14.04979 10.169406,-10.16941 14.950508,-14.9505 1.13688,-1.13689 H 89.162515 62.225136 43.899646 l 0.001,-19.86855 h 18.32294 26.937378 l 17.649056,-5.2e-4 -1.1374,-1.1374 -14.952061,-14.95102 -10.170443,-10.17096 z" /></g></svg> Visit LinkedIn
                         </a>
-                        <a href="mailto:franklin@franklinminh.com">
-                            <svg className="link-arrow" viewBox="0 0 100.94268 100.48275" fill="currentColor"><g transform="translate(-43.89965,-98.258601)"><path d="m 94.600942,98.258602 10.169408,10.169408 14.95051,14.95051 11.07167,11.07167 3.87884,3.87883 10.17095,10.17096 -10.1694,10.1694 -14.95051,14.95051 -14.95051,14.95051 -10.170958,10.17096 -14.048756,-14.04979 10.169406,-10.16941 14.950508,-14.9505 1.13688,-1.13689 H 89.162515 62.225136 43.899646 l 0.001,-19.86855 h 18.32294 26.937378 l 17.649056,-5.2e-4 -1.1374,-1.1374 -14.952061,-14.95102 -10.170443,-10.17096 z" /></g></svg> franklin@franklinminh.com
-                        </a>
+                        <div className="email-row">
+                            <a href="mailto:franklin@franklinminh.com">
+                                <svg className="link-arrow" viewBox="0 0 100.94268 100.48275" fill="currentColor"><g transform="translate(-43.89965,-98.258601)"><path d="m 94.600942,98.258602 10.169408,10.169408 14.95051,14.95051 11.07167,11.07167 3.87884,3.87883 10.17095,10.17096 -10.1694,10.1694 -14.95051,14.95051 -14.95051,14.95051 -10.170958,10.17096 -14.048756,-14.04979 10.169406,-10.16941 14.950508,-14.9505 1.13688,-1.13689 H 89.162515 62.225136 43.899646 l 0.001,-19.86855 h 18.32294 26.937378 l 17.649056,-5.2e-4 -1.1374,-1.1374 -14.952061,-14.95102 -10.170443,-10.17096 z" /></g></svg> franklin@franklinminh.com
+                            </a>
+                            <button
+                                className="copy-email-button"
+                                onClick={() => {
+                                    navigator.clipboard.writeText('franklin@franklinminh.com');
+                                    setEmailCopied(true);
+                                    setTimeout(() => setEmailCopied(false), 2000);
+                                }}
+                                aria-label="Copy email"
+                            >
+                                {emailCopied ? <CheckIcon sx={{ fontSize: 14, color: 'inherit' }} /> : <ContentCopyIcon sx={{ fontSize: 14, color: 'inherit' }} />}
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
