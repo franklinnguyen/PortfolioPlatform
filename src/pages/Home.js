@@ -31,7 +31,7 @@ function Home() {
             <HeaderIcons helpText="Select a line to begin. Transfer between lines using the badges." />
             <div className="bio-container">
                 <p className="bio-text">
-                    Hi! I'm Franklin, a developer with a B.S. in Computer Science and Molecular Biology and experience building full-stack GUI and web applications. I'm largely interested using my skillset for medtech, climate solutions, and urban planning. Outside of work, I regularly enjoy group fitness classes, dancing to pop anthems, and taste testing new coffee shops.
+                I’m an MIT CS & Molecular Biology alumnus and Software Engineer on the GUI development team for Medtronic’s Hugo Robotic-Assisted Surgery System. Specializing in C++, Qt/QML, and full-stack development, I’m quick to learn, detail-oriented, and driven to ship high-quality software efficiently.
                 </p>
             </div>
             <div className="content-container">
