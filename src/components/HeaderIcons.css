@@ -39,6 +39,65 @@
     filter: invert(1);
 }
 
+.resume-icon-container {
+    position: fixed;
+    top: 20px;
+    right: 110px;
+    pointer-events: auto;
+    z-index: 1000;
+}
+
+.resume-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2.5px solid var(--color-text);
+    background-color: white;
+    color: var(--color-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    pointer-events: auto;
+}
+
+.resume-icon:hover {
+    background-color: var(--color-text);
+    color: white;
+    transform: scale(1.05);
+}
+
+.resume-tooltip {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    border: 2px solid var(--color-text);
+    border-radius: var(--border-radius);
+    padding: 16px;
+    width: 230px;
+    box-shadow: var(--shadow-tooltip);
+    z-index: 100;
+    pointer-events: auto;
+    animation: tooltipFadeIn 0.2s ease;
+}
+
+.resume-tooltip p {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+}
+
+.resume-tooltip a {
+    color: #003EA7;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.resume-tooltip a:hover {
+    text-decoration: underline;
+}
+
 .contact-icon-container {
     position: fixed;
     top: 20px;
@@ -141,7 +200,12 @@
 
 .contact-tooltip a:hover {
     color: #002d7a;
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.link-arrow,
+.contact-tooltip a .link-arrow {
+    text-decoration: none !important;
 }
 
 .help-tooltip {
@@ -223,6 +287,17 @@
         height: 14px;
     }
 
+    .resume-icon-container {
+        right: 68px;
+        top: 10px;
+    }
+
+    .resume-icon {
+        width: 25px;
+        height: 25px;
+        border: 2px solid var(--color-text);
+    }
+
     .contact-icon-container {
         right: 39px;
         top: 10px;
@@ -235,6 +310,7 @@
         font-size: 18px;
     }
 
+    .resume-icon svg,
     .contact-icon svg,
     .help-icon svg {
         font-size: 16px;
@@ -263,6 +339,17 @@
     .help-icon-container {
         top: 10px;
         right: 10px;
+    }
+
+    .resume-tooltip {
+        top: 30px;
+        width: 210px;
+        padding: 12px;
+    }
+
+    .resume-tooltip p,
+    .resume-tooltip a {
+        font-size: 13px;
     }
 
     .help-tooltip {

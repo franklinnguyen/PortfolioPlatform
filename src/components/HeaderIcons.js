@@ -4,19 +4,25 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckIcon from '@mui/icons-material/Check';
+import DownloadIcon from '@mui/icons-material/Download';
 import './HeaderIcons.css';
 
 function HeaderIcons({ helpText, showBackButton = false }) {
     const [showHelp, setShowHelp] = useState(false);
     const [showContact, setShowContact] = useState(false);
+    const [showResume, setShowResume] = useState(false);
     const [emailCopied, setEmailCopied] = useState(false);
     const navigate = useNavigate();
     const contactRef = useRef(null);
     const helpRef = useRef(null);
+    const resumeRef = useRef(null);
 
     useEffect(() => {
-        if (!showHelp && !showContact) return;
+        if (!showHelp && !showContact && !showResume) return;
         const handleClickOutside = (e) => {
+            if (showResume && resumeRef.current && !resumeRef.current.contains(e.target)) {
+                setShowResume(false);
+            }
             if (showContact && contactRef.current && !contactRef.current.contains(e.target)) {
                 setShowContact(false);
             }
@@ -26,7 +32,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [showHelp, showContact]);
+    }, [showHelp, showContact, showResume]);
 
     return (
         <>
@@ -41,12 +47,39 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                     </button>
                 </div>
             )}
+            <div className="resume-icon-container" ref={resumeRef}>
+                <button
+                    className="resume-icon"
+                    onClick={() => {
+                        setShowResume(!showResume);
+                        setShowContact(false);
+                        setShowHelp(false);
+                    }}
+                    aria-label="Resume options"
+                    title="Resume"
+                >
+                    <DownloadIcon fontSize="small" />
+                </button>
+                {showResume && (
+                    <div className="resume-tooltip">
+                        <p><strong>Click the link below to download my resume.</strong></p>
+                        <a
+                            href="/resume/FranklinMinhNguyenResume.pdf"
+                            download="FranklinMinhNguyenResume.pdf"
+                            onClick={() => setShowResume(false)}
+                        >
+                            Franklin Minh Nguyen — Resume
+                        </a>
+                    </div>
+                )}
+            </div>
             <div className="contact-icon-container" ref={contactRef}>
                 <button
                     className="contact-icon"
                     onClick={() => {
                         setShowContact(!showContact);
                         setShowHelp(false);
+                        setShowResume(false);
                     }}
                     aria-label="Contact"
                 >
@@ -87,6 +120,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                     onClick={() => {
                         setShowHelp(!showHelp);
                         setShowContact(false);
+                        setShowResume(false);
                     }}
                     aria-label="Help"
                 >
