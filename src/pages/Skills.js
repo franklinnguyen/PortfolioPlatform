@@ -17,7 +17,6 @@ function Skills() {
             const width = window.innerWidth;
             const mobile = width <= 768;
             setIsMobile(mobile);
-            // Scale viewBox width based on viewport, min 1000, max 1600
             setViewBoxWidth(Math.max(1000, Math.min(1600, width * 1.2)));
         };
 
@@ -26,14 +25,11 @@ function Skills() {
         return () => window.removeEventListener('resize', updateViewBox);
     }, []);
 
-    // Calculate branch positions with tighter spacing on narrow viewports
-    // Narrow: 250 units, scales up to 450 units on wider viewports
     const gapSize = viewBoxWidth < 900 ? 250 : Math.min(450, viewBoxWidth * 0.28);
     const centerX = viewBoxWidth / 2;
     const leftX = centerX - gapSize;
     const rightX = centerX + gapSize;
 
-    // Mobile: smaller horizontal offset to keep labels within viewBox
     const mobileHorizontalOffset = isMobile ? 220 : 320;
     const languagesSkills = [
         'Python',

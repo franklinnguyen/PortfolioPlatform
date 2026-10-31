@@ -8,7 +8,7 @@ const HIT_HEIGHT = 1000;
 const MOUSE_HIT_RADIUS_PX = 1;
 const TOUCH_HIT_RADIUS_PX = 16;
 
-// Module state survives page changes but not a reload, so the reveal plays once per visit
+// Outlives page changes but not a reload, so the reveal plays once per visit
 let hasPlayedReveal = false;
 const LINE_IMAGES = {
   river: '/images/riverImg.svg',
@@ -77,7 +77,6 @@ function TransitMap({ highlightedLine = null }) {
         state.opacity = opacity;
       });
 
-      // Nothing moved, so the last frame is still correct
       if (!needsDraw) return;
       needsDraw = false;
 
@@ -111,7 +110,6 @@ function TransitMap({ highlightedLine = null }) {
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  // Finds the line nearest the pointer, searching further for fingers than for a mouse
   const lineAtPointer = (e, radiusCssPx) => {
     const images = imagesRef.current;
     if (!images) return null;

@@ -11,7 +11,6 @@
 }
 
 .transit-canvas {
-  /* Largest 1800:1000 box that fits the container in both directions */
   width: min(100cqw, 180cqh);
   height: auto;
   flex-shrink: 0;
@@ -23,12 +22,12 @@
   animation: none;
 }
 
-/* The lines grow outward from the central star, which sits at 65% 47% of the artwork */
+/* 65% 47% is the central star */
 @keyframes mapReveal {
   from {
     clip-path: circle(0% at 65% 47%);
   }
-  /* The artwork's farthest edge is reached near 72%; the rest just clears the canvas corners */
+  /* The artwork ends near 72%; the rest clears the canvas corners */
   90% {
     clip-path: circle(75% at 65% 47%);
   }
@@ -43,15 +42,9 @@
   }
 }
 
-@media (max-width: 1800px) {
-  .transit-map-container {
-    width: 100%;
-  }
-}
-
 @media (max-width: 1099px) {
   .transit-canvas {
-    /* 110cqw crops the artwork's blank side margins */
+    /* Over 100cqw crops the artwork's blank side margins */
     width: min(110cqw, 180cqh, 560px);
   }
 }

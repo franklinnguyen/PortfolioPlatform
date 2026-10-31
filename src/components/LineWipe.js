@@ -13,7 +13,6 @@ const LineWipeContext = createContext(null);
 
 export const useLineWipe = () => useContext(LineWipeContext);
 
-// Sweeps the destination line's color over the screen, changes page while covered, then sweeps off
 export function LineWipeProvider({ children }) {
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,7 +27,7 @@ export function LineWipeProvider({ children }) {
         setWipe((current) => current || { path, stage: 'cover' });
     }, [location.pathname, navigate]);
 
-    // Plain "#/..." links stay ordinary anchors, so catch them here rather than in every page
+    // Pages use plain "#/..." anchors, so catch them all here
     useEffect(() => {
         const handleClick = (e) => {
             if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;

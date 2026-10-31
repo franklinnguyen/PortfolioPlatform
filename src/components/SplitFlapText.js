@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './SplitFlapText.css';
 
-// Scramble with letters about as wide as the final one, so they fit its slot without overlapping
+// Letters about as wide as the final one, so they fit its slot
 const flapCharsFor = (char) => {
     if ('ijlftrI'.includes(char)) return 'ijlftr';
     if (char >= 'A' && char <= 'Z') return 'ABDEHKNPRSU';
@@ -11,7 +11,7 @@ const TICK_MS = 60;
 const START_DELAY_MS = 300;
 const STAGGER_MS = 29;
 
-// Module state survives page changes but not a reload, so the flip plays once per visit
+// Outlives page changes but not a reload, so the flip plays once per visit
 let hasPlayedFlip = false;
 
 function SplitFlapText({ text }) {
@@ -23,7 +23,7 @@ function SplitFlapText({ text }) {
 
     useEffect(() => {
         hasPlayedFlip = true;
-        if (elapsed >= totalMs) return undefined;
+        if (skipFlip) return undefined;
         const start = performance.now();
         const interval = setInterval(() => {
             const time = performance.now() - start;
@@ -31,8 +31,7 @@ function SplitFlapText({ text }) {
             if (time >= totalMs) clearInterval(interval);
         }, TICK_MS);
         return () => clearInterval(interval);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [totalMs]);
+    }, [totalMs, skipFlip]);
 
     let charIndex = 0;
     return (
@@ -47,7 +46,6 @@ function SplitFlapText({ text }) {
                                 const settled = elapsed >= START_DELAY_MS + charIndex++ * STAGGER_MS;
                                 const flapChars = flapCharsFor(char);
                                 return (
-                                    // The final character always holds the width, so the line never shifts
                                     <span key={i} className={`split-flap-char ${settled ? 'settled' : ''}`}>
                                         <span className="split-flap-final">{char}</span>
                                         {!settled && (

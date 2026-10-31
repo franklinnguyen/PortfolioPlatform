@@ -1,4 +1,3 @@
-/* Faint street grid behind every page: avenues every 192px over side streets every 48px, tilted like a real city map */
 .street-grid {
     position: fixed;
     inset: -50%;

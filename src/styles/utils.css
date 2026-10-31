@@ -1,5 +1,3 @@
-/* Shared utility styles */
-
 .sign {
     width: 500px;
     height: auto;
@@ -25,7 +23,6 @@
     }
 }
 
-/* Page navigation badges */
 .page-badges {
     display: flex;
     gap: 0.5rem;

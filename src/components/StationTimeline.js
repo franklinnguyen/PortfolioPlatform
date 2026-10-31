@@ -84,7 +84,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
         return () => clearTimeout(keyboardFeedbackTimeoutRef.current);
     }, [keyboardNavFeedback, activeStation]);
 
-    // The star hops as it travels; a fifth of a turn lands it looking the same, so the pulse picks up cleanly
+    // A fifth of a turn lands the star looking the same, so its pulse resumes cleanly
     useEffect(() => {
         if (previousStationRef.current === activeStation) return;
         previousStationRef.current = activeStation;
@@ -97,7 +97,7 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
         ], { duration: 450, easing: 'ease-in-out' });
     }, [activeStation, slideDirection]);
 
-    // Station labels hang below the wrapper, so reserve room for the tallest (hidden probes included) to keep the alerts still
+    // Labels hang below the wrapper, so reserve room for the tallest (including hidden copies)
     useLayoutEffect(() => {
         const wrapper = timelineWrapperRef.current;
         if (!wrapper) return undefined;

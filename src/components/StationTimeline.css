@@ -183,14 +183,6 @@
     right: 0;
 }
 
-.timeline-stations {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
 .timeline-station-wrapper {
     position: absolute;
     top: calc(50% + 30px);
@@ -444,17 +436,6 @@
     }
 }
 
-@keyframes keyboardStationFeedback {
-    from {
-        opacity: 0.75;
-        transform: translateY(4px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .alert-link {
     display: inline-flex;
     align-items: center;
@@ -679,7 +660,7 @@
     }
 }
 
-/* Invisible copies of every station's labels, measured so the alerts never have to move */
+/* Hidden copies of every label, measured so the alerts never move */
 .label-probe,
 .label-probe * {
     visibility: hidden;
@@ -687,7 +668,7 @@
     animation: none !important;
 }
 
-/* StationTimeline.js sets the wrapper's margin-bottom, which is the only gap above the alerts */
+/* The gap above the alerts is the wrapper's margin-bottom, set in StationTimeline.js */
 .station-timeline .station-alerts-container {
     margin-top: 0;
 }

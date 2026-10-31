@@ -45,7 +45,6 @@ function CustomCursor() {
     };
   }, [isVisible]);
 
-  // Hide on touch devices
   const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
   if (isTouchDevice) return null;
 

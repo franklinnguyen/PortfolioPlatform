@@ -260,7 +260,7 @@ body {
     }
 }
 
-/* Narrow or short windows: centered stack of intro (logo, icons, bio), map, badges. Auto margins share the spare height equally around those three groups */
+/* Narrow or short windows: centered stack, with auto margins sharing the spare height */
 @media (max-width: 1099px), (max-height: 550px) {
     .home-container {
         height: 100dvh;
@@ -302,7 +302,6 @@ body {
         height: 30px;
     }
 
-    /* Icons are centered, so tooltips center under the row instead of hanging off an icon */
     .home-header-icons .resume-tooltip,
     .home-header-icons .contact-tooltip,
     .home-header-icons .help-tooltip {
@@ -331,7 +330,7 @@ body {
         text-wrap: pretty;
     }
 
-    /* Basis is the canvas height at 110vw, capped so the map stays in proportion to the bio; margins trim the artwork's blank top and bottom */
+    /* Margins trim the artwork's blank top and bottom */
     .content-container {
         flex: 0 1 min(61.1vw, 311px);
         min-height: 0;
@@ -354,7 +353,7 @@ body {
     }
 }
 
-/* Too short for the map: same stack without it, centered as one group */
+/* Too short for the map */
 @media (max-height: 550px) {
     .home-container {
         overflow-y: auto;
@@ -369,10 +368,9 @@ body {
     }
 }
 
-/* Desktop: name, bio and badges form a centered sidebar beside the map */
+/* Desktop: sidebar beside the map */
 @media (min-width: 1100px) and (min-height: 551px) {
     .home-container {
-        /* Sidebar and map are one centered group; spare width falls outside it */
         --map-width: min(100vw - 584px, 154vh - 110px, 1000px);
         display: grid;
         grid-template-columns: 440px var(--map-width);
@@ -447,7 +445,7 @@ body {
     }
 
     .home-container .transit-canvas {
-        /* 116cqw crops the artwork's blank margins so the gap to the sidebar is real */
+        /* Over 100cqw crops the artwork's blank margins */
         width: 116cqw;
     }
 }

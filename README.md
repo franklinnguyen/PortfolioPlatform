@@ -8,7 +8,7 @@ A personal portfolio inspired by public transit maps, station signage, and Bosto
 
 - Responsive, transit-inspired navigation between portfolio sections
 - Interactive station timelines for experience and projects
-- Animated page transitions and custom cursor effects
+- Line-colored page wipes, a self-drawing map, and a custom star cursor
 - Original SVG signage, maps, icons, and transit branches
 - Mobile layouts with swipe navigation and keyboard controls
 
@@ -37,7 +37,6 @@ The development server runs at `http://localhost:3000`.
 | Command | Description |
 | --- | --- |
 | `npm start` | Run the development server |
-| `npm test` | Start the interactive test runner |
 | `npm run build` | Create an optimized production build in `build/` |
 | `npm run deploy` | Build and publish the site with `gh-pages` |
 
@@ -53,6 +52,7 @@ The development server runs at `http://localhost:3000`.
 ```text
 src/
 ├── components/   # Shared transit UI and navigation components
+├── data/         # Bio text
 ├── pages/        # Home, experience, projects, and skills views
 ├── styles/       # Shared styles
 ├── App.js        # Application routes

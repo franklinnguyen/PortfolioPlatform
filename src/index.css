@@ -7,8 +7,6 @@
   --color-text-tertiary: #666;
   --color-bg-light: #f5f5f5;
   --color-border: #d0d0d0;
-  --color-linkedin: #0077b5;
-  --color-linkedin-hover: #005885;
 
   --shadow-tooltip: 0 4px 12px rgba(0, 0, 0, 0.15);
   --border-radius: 8px;
@@ -29,9 +27,4 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
