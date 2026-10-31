@@ -34,3 +34,18 @@
     width: 100%;
   }
 }
+
+@media (max-width: 760px) {
+  .transit-map-container {
+    container-type: size;
+  }
+
+  .transit-canvas {
+    /* Fit 1800:1000 to the container; 110cqw crops the artwork's blank side margins */
+    width: min(110cqw, 180cqh);
+    height: auto;
+    flex-shrink: 0;
+    max-width: none;
+    max-height: none;
+  }
+}

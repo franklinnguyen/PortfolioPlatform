@@ -98,6 +98,10 @@ body {
     font-weight: normal;
 }
 
+.home-header-icons {
+    display: contents;
+}
+
 .bio-container {
     position: absolute;
     bottom: 20px;
@@ -117,6 +121,7 @@ body {
     text-align: left;
     letter-spacing: 0.01em;
     text-indent: 2em;
+    white-space: pre-line;
     transition: font-size 0.3s ease;
 }
 
@@ -187,15 +192,19 @@ body {
     .home-nav-badges {
         left: 50%;
         top: auto;
-        bottom: 20%;
-        transform: translate(-50%, -50%);
+        bottom: 18px;
+        transform: translateX(-50%);
         opacity: 1;
         pointer-events: auto;
     }
 
     .header-container {
-        justify-content: center;
-        padding-left: 0;
+        top: 12px;
+        height: 58px;
+        padding-top: 0;
+        justify-content: flex-start;
+        padding-left: 14px;
+        box-sizing: border-box;
     }
 
     .title-container {
@@ -221,48 +230,156 @@ body {
     }
 
     .bio-container {
-        top: 16%;
+        top: 105px;
         bottom: auto;
         left: 50%;
         right: auto;
-        transform: translate(-50%, 0);
-        width: 90%;
-        max-width: 90%;
-        text-align: center;
+        transform: translateX(-50%);
+        width: calc(100% - 28px);
+        max-width: none;
+        text-align: left;
     }
 
     .bio-text {
-        font-size: 11px;
+        font-size: 13px;
         text-indent: 0;
-        text-align: center;
+        text-align: left;
+        line-height: 1.45;
     }
 
     .content-container {
-        transform: scale(0.9);
-        padding-top: 5px;
+        transform: none;
+        padding-top: 0;
+        padding-bottom: 0;
         overflow: hidden;
     }
 }
 
-@media (min-height: 900px) {
+@media (max-width: 350px) {
+    .logo-swap,
+    .logo-img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .title-container h2 {
+        font-size: 0.9rem;
+    }
+}
+
+/* Portrait phones: centered stack of intro (logo, icons, bio), map, badges. Auto margins share the spare height equally around those three groups */
+@media (max-width: 760px) and (min-height: 551px) {
+    .home-container {
+        height: 100dvh;
+        box-sizing: border-box;
+        padding: 10px 0;
+        gap: 10px;
+    }
+
+    .header-container {
+        position: static;
+        flex-shrink: 0;
+        height: auto;
+        margin-top: auto;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .home-header-icons {
+        display: flex;
+        position: relative;
+        flex-shrink: 0;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        margin-top: 4px;
+        z-index: 1000;
+    }
+
+    .home-header-icons .resume-icon-container,
+    .home-header-icons .contact-icon-container,
+    .home-header-icons .help-icon-container {
+        position: static;
+    }
+
+    .home-header-icons .resume-icon,
+    .home-header-icons .contact-icon,
+    .home-header-icons .help-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Icons are centered, so tooltips center under the row instead of hanging off an icon */
+    .home-header-icons .resume-tooltip,
+    .home-header-icons .contact-tooltip,
+    .home-header-icons .help-tooltip {
+        top: 36px;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: fit-content;
+        min-width: 0;
+        max-width: min(280px, calc(100% - 28px));
+        box-sizing: border-box;
+    }
+
+    .bio-container {
+        position: static;
+        flex-shrink: 0;
+        transform: none;
+        max-width: 400px;
+        margin-top: 6px;
+        margin-bottom: auto;
+    }
+
+    .bio-text {
+        font-size: clamp(13px, 1.7dvh, 15px);
+        text-align: center;
+        text-wrap: pretty;
+    }
+
+    /* Basis is the canvas height at 110vw; margins trim the artwork's blank top and bottom */
     .content-container {
+        flex: 0 1 61.1vw;
+        min-height: 0;
+        height: auto;
+        margin-top: -3.6vw;
+        margin-bottom: -6vw;
+    }
+
+    .home-nav-badges {
+        position: static;
+        flex-shrink: 0;
+        transform: none;
+        margin-top: clamp(0px, 2dvh, 18px);
+        margin-bottom: auto;
+    }
+
+    .home-nav-badges .page-badge img {
+        height: 34px;
+        width: auto;
+    }
+}
+
+@media (min-height: 900px) {
+    .home-container .content-container {
         transform: scale(1.2);
     }
 }
 
 @media (max-height: 700px) {
-    .content-container {
+    .home-container .content-container {
         transform: scale(0.8);
     }
 }
 
-@media (max-width: 768px) and (min-height: 600px) {
-    .content-container {
-        transform: scale(1);
+@media (max-width: 760px) {
+    .home-container .content-container {
+        transform: none;
     }
 }
 
-@media (max-height: 600px) {
+@media (max-height: 600px) and (min-width: 761px) {
     .header-container {
         padding-top: 15px;
         height: auto;

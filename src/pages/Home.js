@@ -29,7 +29,9 @@ function Home() {
                     </h2>
                 </div>
             </div>
-            <HeaderIcons helpText="Select a line to begin. Transfer between lines using the badges." />
+            <div className="home-header-icons">
+                <HeaderIcons helpText="Select a line to begin. Transfer between lines using the badges." />
+            </div>
             <div className="bio-container">
                 <p className="bio-text">
                     {bio}
