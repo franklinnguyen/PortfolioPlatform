@@ -11,13 +11,18 @@ const TICK_MS = 60;
 const START_DELAY_MS = 300;
 const STAGGER_MS = 29;
 
+// Module state survives page changes but not a reload, so the flip plays once per visit
+let hasPlayedFlip = false;
+
 function SplitFlapText({ text }) {
     const totalMs = START_DELAY_MS + text.length * STAGGER_MS;
-    const [elapsed, setElapsed] = useState(() =>
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches ? totalMs : 0
+    const [skipFlip] = useState(() =>
+        hasPlayedFlip || window.matchMedia('(prefers-reduced-motion: reduce)').matches
     );
+    const [elapsed, setElapsed] = useState(skipFlip ? totalMs : 0);
 
     useEffect(() => {
+        hasPlayedFlip = true;
         if (elapsed >= totalMs) return undefined;
         const start = performance.now();
         const interval = setInterval(() => {
@@ -33,7 +38,7 @@ function SplitFlapText({ text }) {
     return (
         <>
             <span className="split-flap-sr">{text}</span>
-            <span aria-hidden="true">
+            <span aria-hidden="true" className={skipFlip ? 'split-flap-still' : ''}>
                 {text.split(' ').map((word, wordIndex) => (
                     <span key={wordIndex}>
                         {wordIndex > 0 && ' '}

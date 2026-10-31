@@ -27,6 +27,10 @@
     animation: splitFlapSettle 0.25s ease-out;
 }
 
+.split-flap-still .split-flap-char.settled .split-flap-final {
+    animation: none;
+}
+
 .split-flap-scramble {
     position: absolute;
     inset: 0;

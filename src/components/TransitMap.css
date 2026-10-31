@@ -19,6 +19,10 @@
   animation: mapReveal 1.4s cubic-bezier(0.45, 0, 0.25, 1) 0.2s both;
 }
 
+.transit-canvas.reveal-done {
+  animation: none;
+}
+
 /* The lines grow outward from the central star, which sits at 65% 47% of the artwork */
 @keyframes mapReveal {
   from {

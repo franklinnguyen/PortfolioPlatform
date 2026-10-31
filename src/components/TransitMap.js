@@ -3,6 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import { useLineWipe } from './LineWipe';
 
 const LINES = ['experience', 'projects', 'skills'];
+const HIT_WIDTH = 1800;
+const HIT_HEIGHT = 1000;
+const MOUSE_HIT_RADIUS_PX = 1;
+const TOUCH_HIT_RADIUS_PX = 16;
+
+// Module state survives page changes but not a reload, so the reveal plays once per visit
+let hasPlayedReveal = false;
 const LINE_IMAGES = {
   river: '/images/riverImg.svg',
   experience: '/images/experienceLine.svg',
@@ -17,8 +24,14 @@ function TransitMap({ highlightedLine = null }) {
   const imagesRef = useRef(null);
   const activeLineRef = useRef(null);
   const [hoveredLine, setHoveredLine] = useState(null);
+  const [revealDone, setRevealDone] = useState(hasPlayedReveal);
+  const hitContextsRef = useRef(null);
 
   activeLineRef.current = hoveredLine || highlightedLine;
+
+  useEffect(() => {
+    hasPlayedReveal = true;
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -98,61 +111,56 @@ function TransitMap({ highlightedLine = null }) {
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  const handleMouseMove = (e) => {
-    const canvas = canvasRef.current;
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = 1800 / rect.width;
-    const scaleY = 1000 / rect.height;
-    const x = (e.clientX - rect.left) * scaleX;
-    const y = (e.clientY - rect.top) * scaleY;
-
+  // Finds the line nearest the pointer, searching further for fingers than for a mouse
+  const lineAtPointer = (e, radiusCssPx) => {
     const images = imagesRef.current;
-    if (!images) return;
+    if (!images) return null;
 
-    const checkLine = (img) => {
-      const tempCanvas = document.createElement('canvas');
-      tempCanvas.width = 1800;
-      tempCanvas.height = 1000;
-      const tempCtx = tempCanvas.getContext('2d');
-      tempCtx.drawImage(img, 0, 0, 1800, 1000);
+    const rect = canvasRef.current.getBoundingClientRect();
+    const scale = HIT_WIDTH / rect.width;
+    const x = Math.round((e.clientX - rect.left) * scale);
+    const y = Math.round((e.clientY - rect.top) * scale);
+    const radius = Math.ceil(radiusCssPx * scale);
 
-      // Check a 3x3 grid around the point for better hit detection
-      const checkRadius = 1;
-      for (let dy = -checkRadius; dy <= checkRadius; dy++) {
-        for (let dx = -checkRadius; dx <= checkRadius; dx++) {
-          const pixel = tempCtx.getImageData(
-            Math.max(0, Math.min(1799, x + dx)),
-            Math.max(0, Math.min(999, y + dy)),
-            1,
-            1
-          ).data;
-          if (pixel[3] > 50) { // Lower threshold for better detection
-            return true;
+    if (!hitContextsRef.current) {
+      hitContextsRef.current = Object.fromEntries(LINES.map((line) => {
+        const hitCanvas = document.createElement('canvas');
+        hitCanvas.width = HIT_WIDTH;
+        hitCanvas.height = HIT_HEIGHT;
+        const hitContext = hitCanvas.getContext('2d', { willReadFrequently: true });
+        hitContext.drawImage(images[line], 0, 0, HIT_WIDTH, HIT_HEIGHT);
+        return [line, hitContext];
+      }));
+    }
+
+    let nearestLine = null;
+    let nearestDistance = Infinity;
+    LINES.forEach((line) => {
+      const size = radius * 2 + 1;
+      const { data } = hitContextsRef.current[line].getImageData(x - radius, y - radius, size, size);
+      for (let row = 0; row < size; row++) {
+        for (let column = 0; column < size; column++) {
+          if (data[(row * size + column) * 4 + 3] > 50) {
+            const distance = Math.hypot(column - radius, row - radius);
+            if (distance < nearestDistance) {
+              nearestDistance = distance;
+              nearestLine = line;
+            }
           }
         }
       }
-      return false;
-    };
-
-    if (checkLine(images.skills)) {
-      setHoveredLine('skills');
-    } else if (checkLine(images.projects)) {
-      setHoveredLine('projects');
-    } else if (checkLine(images.experience)) {
-      setHoveredLine('experience');
-    } else {
-      setHoveredLine(null);
-    }
+    });
+    return nearestLine;
   };
 
-  const handleClick = () => {
-    if (hoveredLine === 'skills') {
-      wipeTo('/skills');
-    } else if (hoveredLine === 'projects') {
-      wipeTo('/projects');
-    } else if (hoveredLine === 'experience') {
-      wipeTo('/experience');
-    }
+  const handleMouseMove = (e) => {
+    setHoveredLine(lineAtPointer(e, MOUSE_HIT_RADIUS_PX));
+  };
+
+  const handleClick = (e) => {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const line = lineAtPointer(e, isTouch ? TOUCH_HIT_RADIUS_PX : MOUSE_HIT_RADIUS_PX);
+    if (line) wipeTo(`/${line}`);
   };
 
   return (
@@ -162,7 +170,8 @@ function TransitMap({ highlightedLine = null }) {
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setHoveredLine(null)}
         onClick={handleClick}
-        className={`transit-canvas ${hoveredLine ? 'line-hovered' : ''}`}
+        onAnimationEnd={() => setRevealDone(true)}
+        className={`transit-canvas ${hoveredLine ? 'line-hovered' : ''} ${revealDone ? 'reveal-done' : ''}`}
       />
     </div>
   );
