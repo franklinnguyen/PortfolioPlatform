@@ -1,0 +1,15 @@
+/* Faint street grid behind every page: avenues every 192px over side streets every 48px, tilted like a real city map */
+.street-grid {
+    position: fixed;
+    inset: -50%;
+    z-index: -1;
+    pointer-events: none;
+    background-color: white;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+        linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+    background-size: 192px 192px, 192px 192px, 48px 48px, 48px 48px;
+    transform: rotate(-8deg);
+}

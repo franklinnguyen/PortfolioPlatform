@@ -2,152 +2,101 @@ import './TransitMap.css';
 import { useEffect, useRef, useState } from 'react';
 import { useLineWipe } from './LineWipe';
 
+const LINES = ['experience', 'projects', 'skills'];
+const LINE_IMAGES = {
+  river: '/images/riverImg.svg',
+  experience: '/images/experienceLine.svg',
+  projects: '/images/projectsLine.svg',
+  skills: '/images/skillsLine.svg',
+  star: '/images/star.svg'
+};
+
 function TransitMap({ highlightedLine = null }) {
   const wipeTo = useLineWipe();
   const canvasRef = useRef(null);
   const imagesRef = useRef(null);
+  const activeLineRef = useRef(null);
   const [hoveredLine, setHoveredLine] = useState(null);
-  const [scaleValues, setScaleValues] = useState({
-    experience: 1,
-    projects: 1,
-    skills: 1
-  });
-  const [opacityValues, setOpacityValues] = useState({
-    experience: 1,
-    projects: 1,
-    skills: 1
-  });
 
-  const activeLine = hoveredLine || highlightedLine;
+  activeLineRef.current = hoveredLine || highlightedLine;
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    const images = {};
+    let loadedCount = 0;
+    Object.entries(LINE_IMAGES).forEach(([name, src]) => {
+      images[name] = new Image();
+      images[name].onload = () => {
+        loadedCount++;
+        if (loadedCount === Object.keys(LINE_IMAGES).length) imagesRef.current = images;
+      };
+      images[name].src = src;
+    });
+
+    const lineState = Object.fromEntries(LINES.map((line) => [line, { scale: 1, opacity: 1 }]));
+    const approach = (current, target) => (Math.abs(target - current) > 0.001 ? current + (target - current) * 0.15 : target);
+
     let animationFrame;
+    let needsDraw = true;
 
-    const animate = () => {
-      setScaleValues(prev => {
-        const newScales = { ...prev };
+    const draw = () => {
+      animationFrame = requestAnimationFrame(draw);
 
-        ['experience', 'projects', 'skills'].forEach(line => {
-          const target = activeLine === line ? 1.05 : 1;
-          const current = prev[line];
-          const diff = target - current;
+      const rect = canvas.getBoundingClientRect();
+      if (!imagesRef.current || !rect.width) return;
 
-          if (Math.abs(diff) > 0.001) {
-            newScales[line] = current + diff * 0.15;
-          } else {
-            newScales[line] = target;
-          }
-        });
-
-        return newScales;
-      });
-
-      setOpacityValues(prev => {
-        const newOpacities = { ...prev };
-
-        ['experience', 'projects', 'skills'].forEach(line => {
-          const target = activeLine && activeLine !== line ? 0.3 : 1;
-          const current = prev[line];
-          const diff = target - current;
-
-          if (Math.abs(diff) > 0.001) {
-            newOpacities[line] = current + diff * 0.15;
-          } else {
-            newOpacities[line] = target;
-          }
-        });
-
-        return newOpacities;
-      });
-
-      animationFrame = requestAnimationFrame(animate);
-    };
-
-    animate();
-    return () => cancelAnimationFrame(animationFrame);
-  }, [activeLine]);
-useEffect(() => {
-  const canvas = canvasRef.current;
-  const ctx = canvas.getContext('2d');
-  
-  const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.getBoundingClientRect();
-  const width = rect.width;
-  const height = rect.height;
-  
-  canvas.width = width * dpr;
-  canvas.height = height * dpr;
-  
-  ctx.scale(dpr, dpr);
-
-  const images = {
-    river: new Image(),
-    experience: new Image(),
-    projects: new Image(),
-    skills: new Image(),
-    star: new Image()
-  };
-
-  images.river.src = '/images/riverImg.svg';
-  images.experience.src = '/images/experienceLine.svg';
-  images.projects.src = '/images/projectsLine.svg';
-  images.skills.src = '/images/skillsLine.svg';
-  images.star.src = '/images/star.svg';
-
-  imagesRef.current = images;
-
-  let loadedCount = 0;
-  const totalImages = Object.keys(images).length;
-
-  Object.values(images).forEach(img => {
-    img.onload = () => {
-      loadedCount++;
-      if (loadedCount === totalImages) {
-        drawCanvas();
+      const dpr = window.devicePixelRatio || 1;
+      const { width, height } = rect;
+      if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        needsDraw = true;
       }
+
+      const activeLine = activeLineRef.current;
+      LINES.forEach((line) => {
+        const state = lineState[line];
+        const scale = approach(state.scale, activeLine === line ? 1.05 : 1);
+        const opacity = approach(state.opacity, activeLine && activeLine !== line ? 0.3 : 1);
+        if (scale !== state.scale || opacity !== state.opacity) needsDraw = true;
+        state.scale = scale;
+        state.opacity = opacity;
+      });
+
+      // Nothing moved, so the last frame is still correct
+      if (!needsDraw) return;
+      needsDraw = false;
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, width, height);
+      ctx.drawImage(images.river, 0, 0, width, height);
+
+      let starScale = 1;
+      LINES.forEach((line) => {
+        const state = lineState[line];
+        starScale = Math.max(starScale, state.scale);
+
+        ctx.save();
+        ctx.globalAlpha = state.opacity;
+        ctx.translate(width / 2, height / 2);
+        ctx.scale(state.scale, state.scale);
+        ctx.translate(-width / 2, -height / 2);
+        ctx.drawImage(images[line], 0, 0, width, height);
+        ctx.restore();
+      });
+
+      ctx.save();
+      ctx.translate(width / 2, height / 2);
+      ctx.scale(starScale, starScale);
+      ctx.translate(-width / 2, -height / 2);
+      ctx.drawImage(images.star, 0, 0, width, height);
+      ctx.restore();
     };
-  });
 
-  const drawCanvas = () => {
-    ctx.clearRect(0, 0, width, height);
-
-    ctx.drawImage(images.river, 0, 0, width, height);
-
-    ctx.save();
-    ctx.globalAlpha = opacityValues.experience;
-    ctx.translate(width / 2, height / 2);
-    ctx.scale(scaleValues.experience, scaleValues.experience);
-    ctx.translate(-width / 2, -height / 2);
-    ctx.drawImage(images.experience, 0, 0, width, height);
-    ctx.restore();
-
-    ctx.save();
-    ctx.globalAlpha = opacityValues.projects;
-    ctx.translate(width / 2, height / 2);
-    ctx.scale(scaleValues.projects, scaleValues.projects);
-    ctx.translate(-width / 2, -height / 2);
-    ctx.drawImage(images.projects, 0, 0, width, height);
-    ctx.restore();
-
-    ctx.save();
-    ctx.globalAlpha = opacityValues.skills;
-    ctx.translate(width / 2, height / 2);
-    ctx.scale(scaleValues.skills, scaleValues.skills);
-    ctx.translate(-width / 2, -height / 2);
-    ctx.drawImage(images.skills, 0, 0, width, height);
-    ctx.restore();
-
-    const starScale = Math.max(scaleValues.experience, scaleValues.projects, scaleValues.skills);
-    ctx.save();
-    ctx.translate(width / 2, height / 2);
-    ctx.scale(starScale, starScale);
-    ctx.translate(-width / 2, -height / 2);
-    ctx.drawImage(images.star, 0, 0, width, height);
-    ctx.restore();
-  };
-
-    drawCanvas();
-    }, [scaleValues, opacityValues]);
+    animationFrame = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
 
   const handleMouseMove = (e) => {
     const canvas = canvasRef.current;
@@ -158,6 +107,7 @@ useEffect(() => {
     const y = (e.clientY - rect.top) * scaleY;
 
     const images = imagesRef.current;
+    if (!images) return;
 
     const checkLine = (img) => {
       const tempCanvas = document.createElement('canvas');

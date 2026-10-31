@@ -6,6 +6,7 @@ import Experience from './pages/Experience';
 import PageTransition from './components/PageTransition';
 import CustomCursor from './components/CustomCursor';
 import { LineWipeProvider } from './components/LineWipe';
+import './components/StreetGrid.css';
 
 function AppRoutes() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function AppRoutes() {
 function App() {
   return (
     <HashRouter>
+      <div className="street-grid" />
       <CustomCursor />
       <LineWipeProvider>
         <AppRoutes />
