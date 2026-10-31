@@ -1,5 +1,7 @@
 import './StationTimeline.css';
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect, useCallback } from 'react';
+
+const LABELS_TO_ALERTS_GAP = 20;
 
 function StationTimeline({ stations, nodeColor = "orange" }) {
     const [activeStation, setActiveStation] = useState(0);
@@ -78,6 +80,25 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
         return () => clearTimeout(keyboardFeedbackTimeoutRef.current);
     }, [keyboardNavFeedback, activeStation]);
 
+    // Station labels hang below the wrapper, so reserve room for the tallest (hidden probes included) to keep the alerts still
+    useLayoutEffect(() => {
+        const wrapper = timelineWrapperRef.current;
+        if (!wrapper) return undefined;
+
+        const reserveLabelSpace = () => {
+            const wrapperBottom = wrapper.getBoundingClientRect().bottom;
+            const labels = wrapper.querySelectorAll('.station-text, .terminal-node-label');
+            const labelsBottom = Math.max(wrapperBottom, ...Array.from(labels, (label) => label.getBoundingClientRect().bottom));
+            wrapper.style.marginBottom = `${Math.ceil(labelsBottom - wrapperBottom) + LABELS_TO_ALERTS_GAP}px`;
+        };
+
+        reserveLabelSpace();
+        document.fonts?.ready.then(reserveLabelSpace);
+        const resizeObserver = new ResizeObserver(reserveLabelSpace);
+        resizeObserver.observe(wrapper);
+        return () => resizeObserver.disconnect();
+    }, [stations]);
+
     return (
         <div className="station-timeline" style={{
             '--timeline-color': colors.primary,
@@ -102,6 +123,12 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                                 <span className="terminal-node-subtitle">{stations[activeStation > 0 ? activeStation - 1 : stations.length - 1].subtitle}</span>
                             )}
                         </div>
+                        {stations.map((station, index) => (
+                            <div key={`terminal-probe-${index}`} className="terminal-node-label label-probe" aria-hidden="true">
+                                <span className="terminal-node-name">{station.name}</span>
+                                {station.subtitle && <span className="terminal-node-subtitle">{station.subtitle}</span>}
+                            </div>
+                        ))}
                     </div>
                     <div className="terminal-node-group end" onClick={handleNext}>
                         <img
@@ -162,6 +189,20 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                             </div>
                         );
                     })}
+                    {stations.map((station, index) => (
+                        <div key={`station-probe-${index}`} className="station-group active label-probe" aria-hidden="true">
+                            <div
+                                className="timeline-station-wrapper"
+                                style={{ left: `${((index + 1) / (stations.length + 1)) * 100}%` }}
+                            >
+                                <div className="station-text">
+                                    <div className="station-label">{station.name}</div>
+                                    {station.subtitle && <div className="station-subtitle">{station.subtitle}</div>}
+                                    <div className="station-date">{station.date}</div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
                 <button className="nav-arrow next bounce-hint" onClick={handleNext} aria-label="Next station">
                     ▶

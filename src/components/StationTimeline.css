@@ -658,12 +658,11 @@
     .station-timeline {
         width: 100%;
         max-width: 100%;
-        padding: 20px 10px;
+        padding: 40px 10px 20px;
     }
 
     .timeline-wrapper {
         width: 100%;
-        margin-bottom: 120px;
     }
 
     .timeline-content {
@@ -674,7 +673,23 @@
 
     .station-alerts-container {
         max-width: 100%;
-        margin: 90px auto 0;
         padding: 0 12px;
     }
+}
+
+/* Invisible copies of every station's labels, measured so the alerts never have to move */
+.label-probe,
+.label-probe * {
+    visibility: hidden;
+    pointer-events: none;
+    animation: none !important;
+}
+
+/* StationTimeline.js sets the wrapper's margin-bottom, which is the only gap above the alerts */
+.station-timeline .station-alerts-container {
+    margin-top: 0;
+}
+
+.station-timeline .station-alerts-header {
+    margin-top: 0;
 }
