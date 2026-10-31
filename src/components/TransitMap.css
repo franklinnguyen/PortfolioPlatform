@@ -7,14 +7,15 @@
   justify-content: center;
   margin: 0 auto;
   overflow: hidden;
+  container-type: size;
   animation: mapEntrance 0.7s ease-out 0.15s both;
 }
 
 .transit-canvas {
-  max-width: 95%;
-  max-height: 95%;
-  width: auto;
+  /* Largest 1800:1000 box that fits the container in both directions */
+  width: min(100cqw, 180cqh);
   height: auto;
+  flex-shrink: 0;
   aspect-ratio: 1800 / 1000;
 }
 
@@ -36,16 +37,8 @@
 }
 
 @media (max-width: 760px) {
-  .transit-map-container {
-    container-type: size;
-  }
-
   .transit-canvas {
-    /* Fit 1800:1000 to the container; 110cqw crops the artwork's blank side margins */
+    /* 110cqw crops the artwork's blank side margins */
     width: min(110cqw, 180cqh);
-    height: auto;
-    flex-shrink: 0;
-    max-width: none;
-    max-height: none;
   }
 }
