@@ -6,9 +6,8 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;
   container-type: size;
-  animation: mapEntrance 0.7s ease-out 0.15s both;
 }
 
 .transit-canvas {
@@ -17,16 +16,26 @@
   height: auto;
   flex-shrink: 0;
   aspect-ratio: 1800 / 1000;
+  animation: mapReveal 1.4s cubic-bezier(0.45, 0, 0.25, 1) 0.2s both;
 }
 
-@keyframes mapEntrance {
+/* The lines grow outward from the central star, which sits at 65% 47% of the artwork */
+@keyframes mapReveal {
   from {
-    opacity: 0;
-    transform: scale(0.97);
+    clip-path: circle(0% at 65% 47%);
+  }
+  /* The artwork's farthest edge is reached near 72%; the rest just clears the canvas corners */
+  90% {
+    clip-path: circle(75% at 65% 47%);
   }
   to {
-    opacity: 1;
-    transform: scale(1);
+    clip-path: circle(100% at 65% 47%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transit-canvas {
+    animation: none;
   }
 }
 

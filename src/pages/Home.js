@@ -2,10 +2,18 @@ import { useEffect, useState } from 'react';
 import './Home.css';
 import TransitMap from '../components/TransitMap';
 import HeaderIcons from '../components/HeaderIcons';
+import SplitFlapText from '../components/SplitFlapText';
 import bio from '../data/bio.js';
+
+const NAV_BADGES = [
+    { line: 'experience', href: '#/experience', src: '/images/experienceBadge.svg', alt: 'Experience' },
+    { line: 'projects', href: '#/projects', src: '/images/projectsBadge.svg', alt: 'Projects' },
+    { line: 'skills', href: '#/skills', src: '/images/skillsBadge.svg', alt: 'Skills' }
+];
 
 function Home() {
     const [isLogoHovered, setIsLogoHovered] = useState(false);
+    const [highlightedLine, setHighlightedLine] = useState(null);
 
     useEffect(() => {
         document.title = 'Franklin Nguyen | Portfolio';
@@ -25,7 +33,7 @@ function Home() {
                 <div className="title-container">
                     <h1>Franklin Nguyen</h1>
                     <h2 className='subtitle-text'>
-                        Software Engineer & MIT Alumnus
+                        <SplitFlapText text="Software Engineer & MIT Alumnus" />
                     </h2>
                 </div>
             </div>
@@ -38,19 +46,23 @@ function Home() {
                 </p>
             </div>
             <div className="content-container">
-                <TransitMap />
+                <TransitMap highlightedLine={highlightedLine} />
             </div>
 
             <div className="home-nav-badges">
-                <a href="#/experience" className="page-badge">
-                    <img src="/images/experienceBadge.svg" alt="Experience" />
-                </a>
-                <a href="#/projects" className="page-badge">
-                    <img src="/images/projectsBadge.svg" alt="Projects" />
-                </a>
-                <a href="#/skills" className="page-badge">
-                    <img src="/images/skillsBadge.svg" alt="Skills" />
-                </a>
+                {NAV_BADGES.map(({ line, href, src, alt }) => (
+                    <a
+                        key={line}
+                        href={href}
+                        className="page-badge"
+                        onMouseEnter={() => setHighlightedLine(line)}
+                        onMouseLeave={() => setHighlightedLine(null)}
+                        onFocus={() => setHighlightedLine(line)}
+                        onBlur={() => setHighlightedLine(null)}
+                    >
+                        <img src={src} alt={alt} />
+                    </a>
+                ))}
             </div>
         </div>
     );

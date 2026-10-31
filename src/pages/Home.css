@@ -245,7 +245,7 @@ body {
         transform: none;
         padding-top: 0;
         padding-bottom: 0;
-        overflow: hidden;
+        overflow: visible;
     }
 }
 

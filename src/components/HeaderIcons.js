@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLineWipe } from './LineWipe';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -12,7 +12,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
     const [showContact, setShowContact] = useState(false);
     const [showResume, setShowResume] = useState(false);
     const [emailCopied, setEmailCopied] = useState(false);
-    const navigate = useNavigate();
+    const wipeTo = useLineWipe();
     const contactRef = useRef(null);
     const helpRef = useRef(null);
     const resumeRef = useRef(null);
@@ -40,7 +40,7 @@ function HeaderIcons({ helpText, showBackButton = false }) {
                 <div className="back-button-container">
                     <button
                         className="back-button"
-                        onClick={() => navigate('/')}
+                        onClick={() => wipeTo('/')}
                         aria-label="Back to home"
                     >
                         <img src="/images/backButton.svg" alt="Back" />

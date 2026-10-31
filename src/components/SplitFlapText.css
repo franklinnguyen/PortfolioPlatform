@@ -1,0 +1,45 @@
+.split-flap-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.split-flap-word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.split-flap-char {
+    display: inline-block;
+    position: relative;
+}
+
+.split-flap-final {
+    display: inline-block;
+    visibility: hidden;
+}
+
+.split-flap-char.settled .split-flap-final {
+    visibility: visible;
+    animation: splitFlapSettle 0.25s ease-out;
+}
+
+.split-flap-scramble {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    color: #888;
+}
+
+@keyframes splitFlapSettle {
+    from {
+        transform: rotateX(90deg);
+    }
+    to {
+        transform: rotateX(0);
+    }
+}

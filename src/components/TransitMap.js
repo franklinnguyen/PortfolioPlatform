@@ -1,9 +1,9 @@
 import './TransitMap.css';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLineWipe } from './LineWipe';
 
-function TransitMap() {
-  const navigate = useNavigate();
+function TransitMap({ highlightedLine = null }) {
+  const wipeTo = useLineWipe();
   const canvasRef = useRef(null);
   const imagesRef = useRef(null);
   const [hoveredLine, setHoveredLine] = useState(null);
@@ -18,6 +18,8 @@ function TransitMap() {
     skills: 1
   });
 
+  const activeLine = hoveredLine || highlightedLine;
+
   useEffect(() => {
     let animationFrame;
 
@@ -26,7 +28,7 @@ function TransitMap() {
         const newScales = { ...prev };
 
         ['experience', 'projects', 'skills'].forEach(line => {
-          const target = hoveredLine === line ? 1.05 : 1;
+          const target = activeLine === line ? 1.05 : 1;
           const current = prev[line];
           const diff = target - current;
 
@@ -44,7 +46,7 @@ function TransitMap() {
         const newOpacities = { ...prev };
 
         ['experience', 'projects', 'skills'].forEach(line => {
-          const target = hoveredLine && hoveredLine !== line ? 0.3 : 1;
+          const target = activeLine && activeLine !== line ? 0.3 : 1;
           const current = prev[line];
           const diff = target - current;
 
@@ -63,7 +65,7 @@ function TransitMap() {
 
     animate();
     return () => cancelAnimationFrame(animationFrame);
-  }, [hoveredLine]);
+  }, [activeLine]);
 useEffect(() => {
   const canvas = canvasRef.current;
   const ctx = canvas.getContext('2d');
@@ -195,11 +197,11 @@ useEffect(() => {
 
   const handleClick = () => {
     if (hoveredLine === 'skills') {
-      navigate('/skills');
+      wipeTo('/skills');
     } else if (hoveredLine === 'projects') {
-      navigate('/projects');
+      wipeTo('/projects');
     } else if (hoveredLine === 'experience') {
-      navigate('/experience');
+      wipeTo('/experience');
     }
   };
 

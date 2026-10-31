@@ -5,6 +5,7 @@ import Projects from './pages/Projects';
 import Experience from './pages/Experience';
 import PageTransition from './components/PageTransition';
 import CustomCursor from './components/CustomCursor';
+import { LineWipeProvider } from './components/LineWipe';
 
 function AppRoutes() {
   const location = useLocation();
@@ -25,7 +26,9 @@ function App() {
   return (
     <HashRouter>
       <CustomCursor />
-      <AppRoutes />
+      <LineWipeProvider>
+        <AppRoutes />
+      </LineWipeProvider>
     </HashRouter>
   );
 }
