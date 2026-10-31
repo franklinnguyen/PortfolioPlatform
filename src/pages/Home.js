@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './Home.css';
 import TransitMap from '../components/TransitMap';
 import HeaderIcons from '../components/HeaderIcons';
+import bio from '../data/bio.js';
 
 function Home() {
     const [isLogoHovered, setIsLogoHovered] = useState(false);
@@ -31,7 +32,7 @@ function Home() {
             <HeaderIcons helpText="Select a line to begin. Transfer between lines using the badges." />
             <div className="bio-container">
                 <p className="bio-text">
-                I’m an MIT CS & Molecular Biology alumnus and Software Engineer on the GUI development team for Medtronic’s Hugo Robotic-Assisted Surgery System. Proficient in Python, C++, Qt/QML, and full-stack development (React/Flutter), I’m quick to learn, detail-oriented, and driven to ship high-quality software efficiently.
+                    {bio}
                 </p>
             </div>
             <div className="content-container">
