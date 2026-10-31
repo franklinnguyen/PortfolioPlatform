@@ -254,6 +254,7 @@
     transform: translate(-50%, -50%);
     z-index: 5;
     animation: starFadeIn 0.5s ease-in, starPulse 2s ease-in-out 0.5s infinite;
+    transition: left 0.45s ease-in-out;
 }
 
 @keyframes starFadeIn {
@@ -289,6 +290,7 @@
     white-space: nowrap;
     z-index: 6;
     animation: labelFadeIn 0.5s ease-in;
+    transition: left 0.45s ease-in-out;
 }
 
 @keyframes labelFadeIn {
@@ -611,8 +613,8 @@
 
     .station-group.active .timeline-line-dot,
     .station-group.active .timeline-station-wrapper,
-    .station-group.active .you-are-here-label,
-    .station-group.active .timeline-star {
+    .timeline-content > .you-are-here-label,
+    .timeline-content > .timeline-star {
         left: 50% !important;
     }
 
@@ -692,4 +694,11 @@
 
 .station-timeline .station-alerts-header {
     margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .timeline-star,
+    .you-are-here-label {
+        transition: none;
+    }
 }

@@ -8,6 +8,8 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
     const [slideDirection, setSlideDirection] = useState('right');
     const [keyboardNavFeedback, setKeyboardNavFeedback] = useState(false);
     const timelineRef = useRef(null);
+    const starRef = useRef(null);
+    const previousStationRef = useRef(activeStation);
     const timelineWrapperRef = useRef(null);
     const keyboardFeedbackTimeoutRef = useRef(null);
 
@@ -18,6 +20,8 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
         red: { primary: '#db3325', hover: '#c42d20', shadow: 'rgba(219, 51, 37, 0.2)' }
     };
     const colors = colorMap[nodeColor] || colorMap.orange;
+
+    const activePosition = ((activeStation + 1) / (stations.length + 1)) * 100;
 
     const scrollToStation = useCallback((index) => {
         setActiveStation(index);
@@ -79,6 +83,19 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
         }, 320);
         return () => clearTimeout(keyboardFeedbackTimeoutRef.current);
     }, [keyboardNavFeedback, activeStation]);
+
+    // The star hops as it travels; a fifth of a turn lands it looking the same, so the pulse picks up cleanly
+    useEffect(() => {
+        if (previousStationRef.current === activeStation) return;
+        previousStationRef.current = activeStation;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const turn = slideDirection === 'right' ? 72 : -72;
+        starRef.current?.animate([
+            { transform: 'translate(-50%, -50%) translateY(0) rotate(0deg)' },
+            { transform: `translate(-50%, -50%) translateY(-16px) rotate(${turn / 2}deg) scale(1.1)` },
+            { transform: `translate(-50%, -50%) translateY(0) rotate(${turn}deg)` }
+        ], { duration: 450, easing: 'ease-in-out' });
+    }, [activeStation, slideDirection]);
 
     // Station labels hang below the wrapper, so reserve room for the tallest (hidden probes included) to keep the alerts still
     useLayoutEffect(() => {
@@ -156,22 +173,6 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                                     }}
                                     onClick={() => scrollToStation(index)}
                                 />
-                                {isActive && (
-                                    <>
-                                        <div
-                                            className="you-are-here-label"
-                                            style={{ left: `${position}%` }}
-                                        >
-                                            You are here
-                                        </div>
-                                        <img
-                                            src="/images/isolatedStar.svg"
-                                            alt="You are here"
-                                            className="timeline-star"
-                                            style={{ left: `${position}%` }}
-                                        />
-                                    </>
-                                )}
                                 <div
                                     className={`timeline-station-wrapper ${isActive && keyboardNavFeedback ? 'keyboard-active-feedback' : ''}`}
                                     style={{
@@ -189,6 +190,16 @@ function StationTimeline({ stations, nodeColor = "orange" }) {
                             </div>
                         );
                     })}
+                    <div className="you-are-here-label" style={{ left: `${activePosition}%` }}>
+                        You are here
+                    </div>
+                    <img
+                        ref={starRef}
+                        src="/images/isolatedStar.svg"
+                        alt="You are here"
+                        className="timeline-star"
+                        style={{ left: `${activePosition}%` }}
+                    />
                     {stations.map((station, index) => (
                         <div key={`station-probe-${index}`} className="station-group active label-probe" aria-hidden="true">
                             <div

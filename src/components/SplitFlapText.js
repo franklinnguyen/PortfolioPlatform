@@ -7,9 +7,9 @@ const flapCharsFor = (char) => {
     if (char >= 'A' && char <= 'Z') return 'ABDEHKNPRSU';
     return 'acenosuvxz';
 };
-const TICK_MS = 70;
-const START_DELAY_MS = 400;
-const STAGGER_MS = 37;
+const TICK_MS = 60;
+const START_DELAY_MS = 300;
+const STAGGER_MS = 29;
 
 function SplitFlapText({ text }) {
     const totalMs = START_DELAY_MS + text.length * STAGGER_MS;
