@@ -36,9 +36,9 @@
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1099px) {
   .transit-canvas {
     /* 110cqw crops the artwork's blank side margins */
-    width: min(110cqw, 180cqh);
+    width: min(110cqw, 180cqh, 560px);
   }
 }
